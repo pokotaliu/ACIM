@@ -51,7 +51,7 @@ export default function LessonList({ completedLessons = [], isLoaded = true }) {
 
           {/* Sections */}
           <div className="space-y-6 mb-16">
-            {part.sections.map((section, sectionIndex) => {
+            {part.sections.map((section) => {
               const sectionKey = `${part.part}-${section.range}`;
               const isExpanded = expandedSections[sectionKey];
               const progress = getSectionProgress(section.start, section.end);
