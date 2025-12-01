@@ -1,0 +1,194 @@
+/* Custom fonts - elegant serif for English text */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600&display=swap');
+
+@import "tailwindcss";
+
+:root {
+  /* Warm, soft color palette - like an evening lecture hall */
+  --color-bg: #f5f0e8;
+  --color-bg-dark: #e8e0d4;
+  --color-text: #3d3832;
+  --color-text-muted: #6b635a;
+  --color-accent: #8b7355;
+  --color-border: #d4ccc0;
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Noto Serif TC', Georgia, serif;
+  --font-sans: 'Noto Serif TC', system-ui, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.8;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Paper texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* English original text styling */
+.text-english {
+  font-family: var(--font-serif);
+  font-size: 1.25rem;
+  line-height: 2;
+  letter-spacing: 0.01em;
+}
+
+/* Chinese commentary styling */
+.text-chinese {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  line-height: 2;
+}
+
+/* Stage directions / actions in commentary */
+.stage-direction {
+  color: var(--color-text-muted);
+  font-style: italic;
+  font-size: 0.95em;
+}
+
+/* Fade in animation for scroll-triggered elements */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slower fade for more dramatic effect */
+.fade-in-slow {
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+}
+
+/* Opening animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 1s ease-out forwards;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-500 {
+  animation-delay: 500ms;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1000ms;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1500ms;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2000ms;
+}
+
+/* Practice mode overlay */
+.practice-overlay {
+  backdrop-filter: blur(10px);
+}
+
+/* Timer ring animation */
+@keyframes countdown {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 283;
+  }
+}
+
+/* Pulse animation for practice prompts */
+@keyframes pulse-soft {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 4s ease-in-out infinite;
+}
+
+/* Button styling */
+.btn-practice {
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.75rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.btn-practice:hover {
+  background-color: #7a6548;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(139, 115, 85, 0.3);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent);
+}
