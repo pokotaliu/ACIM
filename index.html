@@ -7,8 +7,31 @@
     <meta name="description" content="A Course in Miracles - Immersive Workbook Study Experience inspired by Kenneth Wapnick" />
     <meta name="theme-color" content="#f5f0e8" />
     <title>A Course in Miracles | Lesson 1</title>
+    <style>
+      /* Fallback styles in case CSS fails to load */
+      body {
+        background-color: #f5f0e8;
+        margin: 0;
+        padding: 0;
+        font-family: Georgia, serif;
+      }
+      #root:empty::after {
+        content: "Loading...";
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #6b635a;
+        font-size: 1.2rem;
+      }
+    </style>
   </head>
   <body>
+    <noscript>
+      <div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 20px; text-align: center; color: #3d3832; font-family: Georgia, serif;">
+        <p>此網站需要啟用 JavaScript 才能正常運作。<br>Please enable JavaScript to view this site.</p>
+      </div>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
