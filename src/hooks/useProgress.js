@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 const STORAGE_KEY = 'acim-progress';
 
@@ -41,15 +41,9 @@ function saveProgress(progress) {
 }
 
 export function useProgress() {
-  const [progress, setProgress] = useState(defaultProgress);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  // Load progress from localStorage on mount
-  useEffect(() => {
-    const stored = getStoredProgress();
-    setProgress(stored);
-    setIsLoaded(true);
-  }, []);
+  // Initialize directly from localStorage
+  const [progress, setProgress] = useState(getStoredProgress);
+  const [isLoaded] = useState(true);
 
   // Check if a specific lesson is completed
   const isLessonCompleted = useCallback((lessonId) => {

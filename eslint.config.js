@@ -24,6 +24,8 @@ export default defineConfig([
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
+      // Allow setState in effects for legitimate state synchronization patterns
+      'react-hooks/set-state-in-effect': 'off',
     },
   },
 ])

@@ -52,6 +52,306 @@ body::before {
   z-index: -1;
 }
 
+/* ===== Lesson Container ===== */
+.lesson-container {
+  min-height: 100vh;
+}
+
+.scenes-wrapper {
+  position: relative;
+}
+
+/* ===== Scene Container ===== */
+.scene-container {
+  position: relative;
+  transition: opacity 0.8s ease-out;
+}
+
+/* ===== Text Elements ===== */
+.text-element,
+.text-element-word {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  margin: 0.5rem 0;
+}
+
+.text-element.visible,
+.text-element-word.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.text-element-word {
+  font-size: 1.5rem;
+  margin: 1rem 0;
+}
+
+@media (min-width: 768px) {
+  .text-element-word {
+    font-size: 2rem;
+  }
+}
+
+/* ===== Quote Block ===== */
+.quote-block {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
+  background-color: rgba(212, 204, 192, 0.2);
+  border-left: 3px solid var(--color-accent);
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  border-radius: 0 8px 8px 0;
+}
+
+.quote-block.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.quote-block.quote-emphasis {
+  background-color: rgba(139, 115, 85, 0.1);
+  border-left-width: 4px;
+  padding: 2rem 2.5rem;
+}
+
+.quote-en {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.quote-zh {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+.quote-emphasis .quote-en {
+  font-size: 1.5rem;
+}
+
+.quote-emphasis .quote-zh {
+  font-size: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .quote-en {
+    font-size: 1.375rem;
+  }
+
+  .quote-zh {
+    font-size: 1.2rem;
+  }
+
+  .quote-emphasis .quote-en {
+    font-size: 1.75rem;
+  }
+
+  .quote-emphasis .quote-zh {
+    font-size: 1.375rem;
+  }
+}
+
+/* ===== Practice Line ===== */
+.practice-line {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+  padding: 1rem 0;
+  margin: 1rem 0;
+  border-bottom: 1px solid rgba(212, 204, 192, 0.5);
+}
+
+.practice-line.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.practice-line-en {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+.practice-line-zh {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--color-text-muted);
+}
+
+@media (min-width: 768px) {
+  .practice-line-en {
+    font-size: 1.375rem;
+  }
+
+  .practice-line-zh {
+    font-size: 1.1rem;
+  }
+}
+
+/* ===== Scene Buttons ===== */
+.btn-scene {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease-out;
+  background-color: var(--color-accent);
+  color: white;
+  padding: 0.875rem 2rem;
+  border-radius: 9999px;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+  font-family: var(--font-sans);
+  margin: 0.5rem;
+}
+
+.btn-scene.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.btn-scene:hover {
+  background-color: #7a6548;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(139, 115, 85, 0.3);
+}
+
+/* ===== Music Control ===== */
+.music-control-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--color-bg-dark);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.music-control-btn:hover {
+  background-color: var(--color-accent);
+  color: white;
+  border-color: var(--color-accent);
+}
+
+/* ===== Music Prompt Overlay ===== */
+.music-prompt-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(61, 56, 50, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.music-prompt-card {
+  background-color: var(--color-bg);
+  padding: 2.5rem;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 400px;
+  margin: 1rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+}
+
+.music-prompt-text {
+  font-size: 1.25rem;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+}
+
+.music-prompt-subtext {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 2rem;
+}
+
+.music-prompt-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.music-prompt-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: var(--font-sans);
+}
+
+.music-prompt-btn-yes {
+  background-color: var(--color-accent);
+  color: white;
+  border: none;
+}
+
+.music-prompt-btn-yes:hover {
+  background-color: #7a6548;
+}
+
+.music-prompt-btn-no {
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid var(--color-border);
+}
+
+.music-prompt-btn-no:hover {
+  background-color: var(--color-bg-dark);
+}
+
+/* ===== Progress Section ===== */
+.progress-section {
+  padding: 3rem 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+/* ===== Lesson Footer ===== */
+.lesson-footer {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border-top: 1px solid var(--color-border);
+}
+
+.footer-divider {
+  width: 2rem;
+  height: 1px;
+  background-color: var(--color-border);
+  margin: 0 auto 1.5rem;
+}
+
+.footer-text {
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+}
+
+.footer-subtext {
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  margin-top: 0.5rem;
+  opacity: 0.6;
+}
+
+/* ===== Legacy Styles (keeping for compatibility) ===== */
+
 /* English original text styling */
 .text-english {
   font-family: var(--font-serif);
@@ -92,6 +392,15 @@ body::before {
 }
 
 /* Opening animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -243,4 +552,9 @@ body::before {
 
 .page-enter {
   animation: pageEnter 0.5s ease-out forwards;
+}
+
+/* ===== Font Utility Classes ===== */
+.font-serif {
+  font-family: var(--font-serif);
 }

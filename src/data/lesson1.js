@@ -1,90 +1,289 @@
+// Lesson 1: Nothing I see means anything.
+// 完整的沉浸式劇本 - 每個場景都有精心設計的出場時機和節奏
+
 export const lesson1 = {
-  number: 1,
-  title: "Nothing I See Means Anything",
-  titleChinese: "我所看見的一切不具任何意義",
+  id: 1,
+  title: {
+    en: "Nothing I see means anything.",
+    zh: "我看到的一切都沒有意義。"
+  },
 
-  originalText: [
+  scenes: [
+    // ===== 第一幕：標題 =====
     {
-      id: "intro",
-      text: "Nothing I see in this room [on this street, from this window, in this place] means anything."
+      id: "title",
+      type: "title",
+      elements: [
+        {
+          type: "text",
+          content: "Nothing I see means anything.",
+          style: "title-en",
+          delay: 0
+        },
+        {
+          type: "text",
+          content: "我看到的一切都沒有意義。",
+          style: "title-zh",
+          delay: 2000
+        }
+      ],
+      pauseAfter: 3000
     },
-    {
-      id: "instruction1",
-      text: "Now look slowly around you, and practice applying this idea very specifically to whatever you see:"
-    },
-    {
-      id: "examples1",
-      text: "This table does not mean anything. This chair does not mean anything. This hand does not mean anything. This foot does not mean anything. This pen does not mean anything."
-    },
-    {
-      id: "instruction2",
-      text: "Then look farther away from your immediate area, and apply the idea to a wider range:"
-    },
-    {
-      id: "examples2",
-      text: "That door does not mean anything. That body does not mean anything. That lamp does not mean anything. That sign does not mean anything. That shadow does not mean anything."
-    },
-    {
-      id: "explanation",
-      text: "Notice that these statements are not arranged in any order, and make no allowance for differences in the kinds of things to which they are applied. That is the purpose of the exercise. The statement should merely be applied to anything you see. As you practice the idea for the day, use it totally indiscriminately. Do not attempt to apply it to everything you see, for these exercises should not become ritualistic. Only be sure that nothing you see is specifically excluded. One thing is like another as far as the application of the idea is concerned."
-    },
-    {
-      id: "timing",
-      text: "Each of the first three lessons should not be done more than twice a day each, preferably morning and evening. Nor should they be attempted for more than a minute or so, unless that entails a sense of hurry. A comfortable sense of leisure is essential."
-    }
-  ],
 
-  commentary: [
+    // ===== 第二幕：開場 =====
     {
       id: "opening",
-      stageDirection: "[肯恩放下講稿，看著學員]",
-      content: [
-        "這第一課看起來很簡單，不是嗎？只是看著東西，然後說它們沒有意義。",
-        "但你有沒有注意到，課程選擇用這個作為開始？不是從愛開始，不是從寬恕開始，而是從質疑你的知覺開始。這告訴我們一些重要的事情。"
+      type: "commentary",
+      elements: [
+        { type: "text", content: "這是練習手冊的第一句話。", delay: 0 },
+        { type: "text", content: "課程沒有從「愛」開始。", delay: 1500 },
+        { type: "text", content: "沒有從「上主」開始。", delay: 1000 },
+        { type: "text", content: "而是從否定開始。從瓦解開始。", delay: 1000 }
       ]
     },
+
+    // ===== 第三幕：Nothing =====
     {
-      id: "core",
-      stageDirection: null,
-      content: [
-        "課程這裡說的「意義」，是小我賦予的意義。",
-        "我們以為我們在「看」，但實際上我們在「投射」。你看著一張桌子，你看到的不是桌子本身——你看到的是你過去對「桌子」這個概念的所有經驗、記憶、聯想。你看到的是過去，不是當下。"
-      ],
-      pause: true,
-      afterPause: "所以當課程說「這張桌子沒有任何意義」，它是在說：你以為你知道這是什麼，但你不知道。你以為你看到的是真相，但你看到的是你的投射。"
-    },
-    {
-      id: "ego",
-      stageDirection: null,
-      content: [
-        "現在，當你做這個練習的時候，你的小我會有反應。",
-        "它會說：「這太荒謬了。桌子當然有意義，我在上面吃飯、工作。我的手當然有意義，我用它來做事。」"
-      ],
-      stageDirectionMid: "[輕笑]",
-      afterStage: "這正是重點。課程要你質疑的，正是這種「當然」。這種「理所當然」正是小我的防禦機制。小我需要事物有意義，因為如果事物沒有小我賦予的意義，那小我還剩下什麼？"
-    },
-    {
-      id: "attitude",
-      stageDirection: null,
-      content: [
-        "注意課程最後怎麼說的：「A comfortable sense of leisure is essential」——從容不迫的感覺是必要的。",
-        "這不是要你緊張兮兮地掃視房間，拼命對每個東西說「沒有意義、沒有意義」。那會變成另一種小我的活動。",
-        "練習的態度應該是輕鬆的、好奇的，像是你第一次真正看著這些東西。「嗯，有趣，這個東西我以為我認識它，但也許我不認識。」"
+      id: "word-nothing",
+      type: "word-focus",
+      word: "Nothing",
+      elements: [
+        { type: "word", content: "「Nothing」", style: "word-highlight", delay: 0 },
+        { type: "text", content: "沒有任何東西。", delay: 2000 },
+        { type: "text", content: "不是「大部分東西沒有意義」。", delay: 1500 },
+        { type: "text", content: "不是「某些東西沒有意義」。", delay: 800 },
+        { type: "text", content: "是「沒有任何東西」有意義。", delay: 800 },
+        { type: "pause", duration: 2000 },
+        { type: "text", content: "這是一個全稱否定。", delay: 0 },
+        { type: "text", content: "一個極端的聲明。", delay: 800 }
       ]
     },
+
+    // ===== 第四幕：形上學背景 =====
     {
       id: "metaphysics",
-      stageDirection: null,
-      content: [
-        "如果你想要更深入地理解，這一課觸及了課程最核心的形上學：",
-        "這個世界——我們看到的一切——是從分裂的信念中投射出來的。它不是上主創造的，因為上主只創造永恆不變的。會改變的、會消逝的，都是幻相。",
-        "所以這些東西「沒有意義」，不是因為它們不重要，而是因為它們根本不存在——至少不是以我們以為的方式存在。"
-      ],
-      pause: true,
-      afterPause: "這聽起來很激進，我知道。但這是課程的起點。如果你不能接受這個可能性，後面的練習會很難做。所以課程從這裡開始，讓你至少願意質疑你的知覺。"
+      type: "commentary",
+      elements: [
+        { type: "text", content: "奇蹟課程的世界觀是這樣的——", delay: 0 },
+        { type: "pause", duration: 1000 },
+        { type: "text", content: "只有兩個層次。", delay: 0 },
+        { type: "text", content: "上主的層次：永恆不變，絕對真實。", delay: 1000 },
+        { type: "text", content: "世界的層次：不斷變化，終將消逝。", delay: 1000 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "會改變的，不是上主創造的。", delay: 0 },
+        { type: "text", content: "會消逝的，不是真實的。", delay: 1000 },
+        { type: "pause", duration: 2000 },
+        { type: "text", content: "你看到的這個世界，每一樣東西都在變。", delay: 0 },
+        { type: "text", content: "所以⋯⋯", delay: 1500 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "它不是真實的。", delay: 0 },
+        { type: "text", content: "它沒有真正的意義。", delay: 1000 }
+      ]
+    },
+
+    // ===== 第五幕：課文引用 - 練習指導 =====
+    {
+      id: "quote-practice",
+      type: "quote",
+      elements: [
+        {
+          type: "quote-block",
+          en: "Now look slowly around you, and practice applying this idea very specifically to whatever you see.",
+          zh: "現在緩緩環顧四周，將這個觀念具體地應用到你看見的任何事物上。",
+          delay: 0
+        },
+        { type: "pause", duration: 2000 }
+      ]
+    },
+
+    // ===== 第六幕：練習示範 =====
+    {
+      id: "practice-demo",
+      type: "practice",
+      elements: [
+        {
+          type: "practice-line",
+          en: "This table does not mean anything.",
+          zh: "這張桌子沒有任何意義。",
+          delay: 0
+        },
+        { type: "pause", duration: 1500 },
+        {
+          type: "practice-line",
+          en: "This chair does not mean anything.",
+          zh: "這張椅子沒有任何意義。",
+          delay: 0
+        },
+        { type: "pause", duration: 1500 },
+        {
+          type: "practice-line",
+          en: "This hand does not mean anything.",
+          zh: "這隻手沒有任何意義。",
+          delay: 0
+        }
+      ]
+    },
+
+    // ===== 第七幕：小我的反應 =====
+    {
+      id: "ego-reaction",
+      type: "commentary",
+      elements: [
+        { type: "text", content: "現在，你的小我可能在說——", delay: 0 },
+        { type: "pause", duration: 1000 },
+        { type: "text", content: "「這太荒謬了。」", style: "ego-voice", delay: 0 },
+        { type: "text", content: "「桌子當然有意義，我在上面吃飯。」", style: "ego-voice", delay: 800 },
+        { type: "text", content: "「我的手當然有意義，我用它做事。」", style: "ego-voice", delay: 800 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "這正是重點。", delay: 0 },
+        { type: "pause", duration: 1000 },
+        { type: "text", content: "課程要你質疑的，正是這種「當然」。", delay: 0 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "「當然」是小我的防線。", delay: 0 },
+        { type: "text", content: "一旦你開始質疑「當然」，小我就開始動搖。", delay: 1000 }
+      ]
+    },
+
+    // ===== 第八幕：I see =====
+    {
+      id: "word-i-see",
+      type: "word-focus",
+      elements: [
+        { type: "word", content: "「I see」", style: "word-highlight", delay: 0 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "我看到的。", delay: 0 },
+        { type: "pause", duration: 1000 },
+        { type: "text", content: "這個「我」是誰？", delay: 0 },
+        { type: "pause", duration: 1000 },
+        { type: "text", content: "這個「看」是什麼？", delay: 0 },
+        { type: "pause", duration: 2000 },
+        { type: "text", content: "課程會慢慢告訴我們——", delay: 0 },
+        { type: "text", content: "那個以為自己在「看」的「我」，是小我。", delay: 1200 },
+        { type: "text", content: "而小我的「看」，從來不是真正的看。", delay: 1200 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "小我的看，是投射。", delay: 0 },
+        { type: "pause", duration: 2000 },
+        { type: "text", content: "你看著一張桌子。", delay: 0 },
+        { type: "text", content: "你以為你看到的是桌子。", delay: 1200 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "但你看到的是——", delay: 0 },
+        { type: "text", content: "你過去對「桌子」的所有記憶。", delay: 1000 },
+        { type: "text", content: "你對這張特定桌子的情感。", delay: 800 },
+        { type: "text", content: "你的判斷。你的分類。", delay: 800 },
+        { type: "pause", duration: 2000 },
+        { type: "text", content: "你看到的是你的心，不是桌子。", delay: 0 }
+      ]
+    },
+
+    // ===== 第九幕：課文 - 不分順序 =====
+    {
+      id: "quote-no-order",
+      type: "quote",
+      elements: [
+        {
+          type: "quote-block",
+          en: "Notice that these statements are not arranged in any order, and make no allowance for differences in the kinds of things to which they are applied.",
+          zh: "注意，這些陳述沒有特定順序，也不考慮所應用事物之間的差異。",
+          delay: 0
+        },
+        { type: "pause", duration: 2000 },
+        { type: "text", content: "沒有順序。不分種類。", delay: 0 },
+        { type: "pause", duration: 1000 },
+        { type: "text", content: "因為在這個練習裡，一個東西跟另一個東西是一樣的。", delay: 0 },
+        { type: "pause", duration: 1500 },
+        {
+          type: "quote-block",
+          en: "One thing is like another as far as the application of the idea is concerned.",
+          zh: "就這個觀念的應用而言，一個東西和另一個東西是一樣的。",
+          delay: 0
+        }
+      ]
+    },
+
+    // ===== 第十幕：練習的態度 =====
+    {
+      id: "practice-attitude",
+      type: "quote",
+      elements: [
+        {
+          type: "quote-block",
+          en: "Do not attempt to apply it to everything you see, for these exercises should not become ritualistic.",
+          zh: "不要試圖把它應用到你看見的每樣東西，因為這些練習不應該變成儀式。",
+          delay: 0
+        },
+        { type: "pause", duration: 2000 },
+        { type: "text", content: "小我很擅長把靈性練習變成另一種執著。", delay: 0 },
+        { type: "pause", duration: 1000 },
+        { type: "text", content: "「我要做好這個練習。」", style: "ego-voice", delay: 0 },
+        { type: "text", content: "「我要對每個東西都說。」", style: "ego-voice", delay: 600 },
+        { type: "text", content: "「我要做得正確。」", style: "ego-voice", delay: 600 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "這就是小我接管了。", delay: 0 }
+      ]
+    },
+
+    // ===== 第十一幕：從容 =====
+    {
+      id: "leisure",
+      type: "climax",
+      elements: [
+        {
+          type: "quote-block",
+          en: "A comfortable sense of leisure is essential.",
+          zh: "從容不迫的感覺是必要的。",
+          style: "emphasis",
+          delay: 0
+        },
+        { type: "pause", duration: 3000 },
+        { type: "text", content: "課程用這句話結束第一課。", delay: 0 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "從容。不迫。", delay: 0 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "練習的品質比數量重要。", delay: 0 },
+        { type: "text", content: "帶著輕鬆的心做一分鐘，", delay: 1200 },
+        { type: "text", content: "比帶著緊張的心做十分鐘有效。", delay: 800 }
+      ]
+    },
+
+    // ===== 第十二幕：收尾 =====
+    {
+      id: "closing",
+      type: "closing",
+      elements: [
+        { type: "fade-out-all", duration: 2000 },
+        {
+          type: "text",
+          content: "Nothing I see means anything.",
+          style: "title-en",
+          delay: 0
+        },
+        {
+          type: "text",
+          content: "我看到的一切都沒有意義。",
+          style: "title-zh",
+          delay: 1000
+        },
+        { type: "pause", duration: 3000 },
+        { type: "text", content: "這是一個邀請。", delay: 0 },
+        { type: "pause", duration: 1500 },
+        { type: "text", content: "你願不願意開始質疑你的知覺？", delay: 0 },
+        { type: "pause", duration: 3000 },
+        { type: "text", content: "如果你願意，我們就可以開始這趟旅程。", delay: 0 }
+      ]
+    },
+
+    // ===== 導航 =====
+    {
+      id: "navigation",
+      type: "nav",
+      elements: [
+        { type: "button", label: "進入練習模式", action: "practice-mode" },
+        { type: "button", label: "下一課 →", action: "next-lesson" }
+      ]
     }
   ],
 
+  // Practice prompts for practice mode
   practicePrompts: [
     "緩緩環顧四周...",
     "選一個物品...",
@@ -94,4 +293,13 @@ export const lesson1 = {
     "它也沒有任何意義...",
     "讓這個想法輕輕地存在..."
   ]
+};
+
+// Style definitions for different element types
+export const styles = {
+  "title-en": "text-4xl md:text-5xl font-serif text-center leading-relaxed",
+  "title-zh": "text-2xl md:text-3xl text-center mt-4 leading-relaxed",
+  "word-highlight": "text-3xl md:text-4xl font-serif text-center",
+  "ego-voice": "italic text-[var(--color-text-muted)]",
+  "emphasis": "text-2xl md:text-3xl font-serif"
 };
