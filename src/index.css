@@ -375,115 +375,29 @@ body::before {
 }
 
 /* Fade in animation for scroll-triggered elements */
+/* Simplified: elements are visible by default */
 .fade-in-section {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-  /* Fallback: animate to visible after delay in case JS fails */
-  animation: fadeInSectionFallback 0.8s ease-out 3s forwards;
+  opacity: 1;
+  transform: none;
 }
 
 .fade-in-section.is-visible {
   opacity: 1;
-  transform: translateY(0);
-  animation: none; /* Cancel fallback when JS works */
+  transform: none;
 }
 
-@keyframes fadeInSectionFallback {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Reduced motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .fade-in-section {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
-}
-
-/* Slower fade for more dramatic effect */
-.fade-in-slow {
-  transition: opacity 1.2s ease-out, transform 1.2s ease-out;
-}
-
-/* Opening animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* All animation classes - elements visible by default for stability */
 .animate-fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s ease-out forwards;
+  opacity: 1;
+  transform: none;
 }
 
-/* Fallback for reduced motion preference or animation failure */
-@media (prefers-reduced-motion: reduce) {
-  .animate-fade-in-up {
-    opacity: 1;
-    transform: none;
-    animation: none;
-  }
-}
-
-/* Ensure elements are visible after animation should have completed */
-@supports (animation-timeline: auto) {
-  .animate-fade-in-up {
-    /* Modern browsers - animation works normally */
-  }
-}
-
-/* Fallback: force visibility after a delay using animation */
-@keyframes forceVisible {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Apply fallback animation as a safety net */
-.animate-fade-in-up {
-  animation: fadeInUp 1s ease-out forwards, forceVisible 0s 2s forwards;
-}
-
-.animation-delay-300 {
-  animation-delay: 300ms;
-}
-
-.animation-delay-500 {
-  animation-delay: 500ms;
-}
-
-.animation-delay-1000 {
-  animation-delay: 1000ms;
-}
-
-.animation-delay-1500 {
-  animation-delay: 1500ms;
-}
-
+.animation-delay-300,
+.animation-delay-500,
+.animation-delay-1000,
+.animation-delay-1500,
 .animation-delay-2000 {
-  animation-delay: 2000ms;
+  /* No animation delays - immediate visibility */
 }
 
 /* Practice mode overlay */
