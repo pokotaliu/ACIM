@@ -82,21 +82,74 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
+      // Debug: Track loading stages
+      var DEBUG = true;
+      var loadingStages = {
+        scriptStart: Date.now(),
+        reactReady: null,
+        loaderHidden: null
+      };
+
+      function debugLog(stage, message) {
+        if (!DEBUG) return;
+        var elapsed = Date.now() - loadingStages.scriptStart;
+        console.log('[DEBUG ' + elapsed + 'ms] ' + stage + ': ' + message);
+      }
+
+      debugLog('INIT', 'Loading script started');
+      debugLog('INIT', 'Root element exists: ' + !!document.getElementById('root'));
+
       // Hide loader only when React app is ready
-      function hideLoader() {
+      function hideLoader(reason) {
+        debugLog('LOADER', 'hideLoader called - reason: ' + reason);
         var loader = document.getElementById('initial-loader');
+        var root = document.getElementById('root');
+
+        debugLog('LOADER', 'Loader element exists: ' + !!loader);
+        debugLog('LOADER', 'Root element exists: ' + !!root);
+        debugLog('LOADER', 'Root innerHTML length: ' + (root ? root.innerHTML.length : 0));
+        debugLog('LOADER', 'Root children count: ' + (root ? root.children.length : 0));
+
+        if (root && root.children.length === 0) {
+          debugLog('WARNING', '⚠️ Root is empty! React may not have rendered.');
+        }
+
         if (loader) {
           loader.classList.add('fade-out');
+          loadingStages.loaderHidden = Date.now();
+          debugLog('LOADER', 'Loader fade-out started');
           setTimeout(function() {
             loader.remove();
+            debugLog('LOADER', 'Loader removed from DOM');
           }, 500);
         }
       }
 
       // Listen for React ready signal
       window.addEventListener('react-ready', function() {
+        loadingStages.reactReady = Date.now();
+        debugLog('REACT', '✅ react-ready event received!');
         // Small delay to ensure initial render is complete
-        setTimeout(hideLoader, 100);
+        setTimeout(function() {
+          hideLoader('react-ready event');
+        }, 100);
+      });
+
+      // Track DOM content loaded
+      document.addEventListener('DOMContentLoaded', function() {
+        debugLog('DOM', 'DOMContentLoaded fired');
+      });
+
+      // Track window load
+      window.addEventListener('load', function() {
+        debugLog('WINDOW', 'window.load fired');
+        var root = document.getElementById('root');
+        debugLog('WINDOW', 'Root children at window.load: ' + (root ? root.children.length : 0));
+      });
+
+      // Track script errors
+      window.addEventListener('error', function(e) {
+        debugLog('ERROR', '❌ Script error: ' + e.message + ' at ' + e.filename + ':' + e.lineno);
       });
 
       // Fallback: hide loader after 5 seconds if React doesn't signal
@@ -104,10 +157,34 @@
       setTimeout(function() {
         var loader = document.getElementById('initial-loader');
         if (loader) {
+          debugLog('TIMEOUT', '⏰ 5s timeout reached, React did not signal ready');
           console.warn('React did not signal ready within 5s, hiding loader anyway');
-          hideLoader();
+
+          // Check what's in root
+          var root = document.getElementById('root');
+          if (root) {
+            debugLog('TIMEOUT', 'Root innerHTML preview: ' + root.innerHTML.substring(0, 200));
+          }
+
+          hideLoader('5s timeout fallback');
+        } else {
+          debugLog('TIMEOUT', '5s check: loader already hidden (React was ready)');
         }
       }, 5000);
+
+      // Debug: Check status at 1s intervals
+      var checkCount = 0;
+      var statusInterval = setInterval(function() {
+        checkCount++;
+        var root = document.getElementById('root');
+        var loader = document.getElementById('initial-loader');
+        debugLog('STATUS', 'Check #' + checkCount + ' - Root children: ' + (root ? root.children.length : 0) + ', Loader exists: ' + !!loader);
+
+        if (checkCount >= 10 || !loader) {
+          clearInterval(statusInterval);
+          debugLog('STATUS', 'Status checks stopped');
+        }
+      }, 1000);
     </script>
   </body>
 </html>
