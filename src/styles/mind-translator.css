@@ -1076,3 +1076,267 @@
     width: 100%;
   }
 }
+
+/* ===== Lesson Intro Section (課程簡介區) ===== */
+.mt-intro-section {
+  margin-bottom: 3rem;
+  padding: 0 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-intro-content {
+  background: var(--mt-bg-card);
+  border: 1px solid var(--mt-border-subtle);
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+}
+
+.mt-intro-block {
+  margin-bottom: 1.5rem;
+}
+
+.mt-intro-block:last-child {
+  margin-bottom: 0;
+}
+
+.mt-intro-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--mt-text-muted);
+  margin-bottom: 0.75rem;
+  font-weight: normal;
+}
+
+.mt-intro-text {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--mt-text-light);
+  margin: 0;
+}
+
+.mt-intro-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mt-intro-list-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mt-text-light);
+}
+
+.mt-intro-list-item:last-child {
+  margin-bottom: 0;
+}
+
+.mt-intro-bullet {
+  color: var(--mt-application);
+  font-size: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+/* ===== Common Difficulties Section (常見困難區) ===== */
+.mt-difficulties-section {
+  margin-bottom: 3rem;
+  padding: 0 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-difficulties-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.mt-difficulty-item {
+  background: var(--mt-bg-card);
+  border: 1px solid var(--mt-border-subtle);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: all var(--mt-transition-normal);
+}
+
+.mt-difficulty-item:hover {
+  border-color: var(--mt-border-light);
+}
+
+.mt-difficulty-item.expanded {
+  border-color: var(--mt-reminder-border);
+}
+
+.mt-difficulty-question {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  transition: background var(--mt-transition-fast);
+}
+
+.mt-difficulty-question:hover {
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.mt-difficulty-icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(130, 180, 220, 0.1);
+  border-radius: 4px;
+  font-size: 1rem;
+  color: var(--mt-reminder);
+}
+
+.mt-difficulty-q-text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--mt-text-light);
+}
+
+.mt-difficulty-answer {
+  padding: 0 1.25rem 1.25rem 3.5rem;
+  animation: fadeInDown 0.2s ease;
+}
+
+.mt-difficulty-answer p {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--mt-text-muted);
+  margin: 0;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Practice Guide Section (練習指引區) ===== */
+.mt-practice-section {
+  margin-bottom: 3rem;
+  padding: 0 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-practice-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.mt-practice-item {
+  background: var(--mt-bg-card);
+  border: 1px solid var(--mt-border-subtle);
+  border-radius: 8px;
+  padding: 1.25rem;
+  border-left: 3px solid var(--mt-practice-border);
+}
+
+.mt-practice-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.mt-practice-icon {
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+.mt-practice-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--mt-practice);
+  font-weight: 500;
+}
+
+.mt-practice-text {
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--mt-text-light);
+  margin: 0;
+  padding-left: 1.75rem;
+}
+
+/* ===== Gentle Invitation Section (溫柔邀請區) ===== */
+.mt-invitation-section {
+  margin-bottom: 3rem;
+  padding: 0 1.5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-invitation-content {
+  background: linear-gradient(135deg, rgba(130, 180, 220, 0.05) 0%, rgba(100, 150, 200, 0.02) 100%);
+  border: 1px solid var(--mt-spirit-border);
+  border-radius: 12px;
+  padding: 2rem;
+}
+
+.mt-invitation-quote {
+  margin: 0;
+  padding: 0;
+}
+
+.mt-invitation-text {
+  font-family: var(--mt-font-body);
+  font-size: 1rem;
+  line-height: 2;
+  color: var(--mt-text-light);
+  margin: 0 0 1rem;
+  text-align: justify;
+}
+
+.mt-invitation-source {
+  font-size: 0.85rem;
+  color: var(--mt-spirit-accent);
+  font-style: italic;
+  text-align: right;
+}
+
+/* ===== Responsive Adjustments for New Sections ===== */
+@media (max-width: 640px) {
+  .mt-intro-content,
+  .mt-invitation-content {
+    padding: 1.25rem;
+  }
+
+  .mt-intro-text,
+  .mt-intro-list-item,
+  .mt-difficulty-q-text,
+  .mt-difficulty-answer p,
+  .mt-practice-text,
+  .mt-invitation-text {
+    font-size: 0.9rem;
+  }
+
+  .mt-practice-text {
+    padding-left: 0;
+  }
+
+  .mt-difficulty-answer {
+    padding-left: 1.25rem;
+  }
+}

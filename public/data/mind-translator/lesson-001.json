@@ -4,13 +4,13 @@
 
   "core": {
     "en": "Nothing I see means anything.",
-    "zh": "我所見的一切毫無意義",
-    "note": "拆解的起點——你以為你知道這些東西是什麼",
+    "zh": "我所見的一切毫無意義。",
+    "note": "這是拆解的起點——拆解你以為認識的世界",
     "minds": {
       "ego": {
         "filters": ["恐懼", "虛無", "抗拒"],
         "main": "「什麼都沒意義？那活著幹嘛？」",
-        "voice": [
+        "innerVoice": [
           "這是虛無主義。",
           "如果沒有意義，就沒有目的。",
           "沒有目的，我是誰？",
@@ -21,7 +21,7 @@
       "spiritual_ego": {
         "filters": ["繞道", "假懂", "優越"],
         "main": "「對，一切都是幻相，我早就知道了。」",
-        "voice": [
+        "innerVoice": [
           "這個概念我很熟。",
           "一切都是幻相，我已經超越了。",
           "這一課對我來說太簡單。"
@@ -32,14 +32,24 @@
         "filters": ["釋放", "自由", "邀請"],
         "quote": "Nothing I see means anything.",
         "main": "這不是否定，是邀請你放下恐懼的詮釋。",
-        "voice": [
+        "innerVoice": [
           "你賦予事物的意義，充滿恐懼。",
           "「沒意義」不是虛無，",
-          "而是讓真正的意義有空間浮現。"
+          "而是讓真正的意義有空間浮現。",
+          "放下你給的，才能看見本來就在的。"
         ],
         "world": ["自由", "平安", "開放"]
       }
     }
+  },
+
+  "intro": {
+    "whatItDoes": "練習手冊的第一課，是整個「拆解小我思想系統」的第一步。就像清理一面被污垢完全覆蓋的鏡子，我們需要徹底清潔，而不是選擇性地清理某些部分。",
+    "whatItUndoes": [
+      "「Nothing」的絕對性挑戰小我的分類系統",
+      "「I see」質疑整個感知過程",
+      "「Means Anything」揭示意義是投射的"
+    ]
   },
 
   "keyBlocks": [
@@ -48,305 +58,316 @@
       "en": "slowly",
       "zh": "慢慢地",
       "category": "practice",
-      "why": "急躁、效率導向",
+      "context": "瓦解小我的急躁、效率導向",
+      "explanation": "在通常的生活中，視覺掃描是快速和自動的。「慢慢地」中斷這種自動化模式，創造觀察空間。",
       "minds": {
         "ego": {
-          "filters": ["急躁", "效率", "時間"],
+          "filters": ["急躁", "效率", "時間壓力"],
           "main": "「慢慢來？我沒時間。」",
-          "voice": ["快點做完。", "我還有很多事。", "結果比過程重要。"],
+          "innerVoice": ["快點做完。", "我還有很多事。", "結果比過程重要。"],
           "world": ["匆忙", "焦躁", "錯過"]
         },
         "spiritual_ego": {
           "filters": ["表演", "正確", "形式"],
           "main": "「好，我要很慢、很有覺知地做。」",
-          "voice": ["我要展現我的覺知。", "看，我多麼專注。", "這才是正確的修行。"],
+          "innerVoice": ["我要展現我的覺知。", "看，我多麼專注。", "這才是正確的修行。"],
           "world": ["表演", "僵硬", "自我監視"]
         },
         "spirit": {
           "filters": ["從容", "當下", "自然"],
           "quote": "slowly",
           "main": "慢，是讓急躁的心有空間安靜。",
-          "voice": ["不是為了慢而慢，", "而是讓你有機會看見", "平常錯過的。"],
+          "innerVoice": ["不是為了慢而慢，", "而是讓你有機會看見", "平常錯過的。"],
           "world": ["從容", "覺察", "空間"]
         }
       }
     },
     {
-      "id": "specifically",
+      "id": "very-specifically",
       "en": "very specifically",
       "zh": "非常具體地",
       "category": "practice",
-      "why": "用抽象概念逃避",
+      "context": "瓦解小我用抽象概念逃避的習慣",
+      "explanation": "小我喜歡說「我懂這個概念」然後跳過。「非常具體」強迫你面對「這張桌子」，不是「桌子這個概念」。具體 = 無處可逃。",
       "minds": {
         "ego": {
           "filters": ["抽象", "逃避", "籠統"],
           "main": "「我大概知道意思就好。」",
-          "voice": ["我懂這個概念了。", "不需要一個一個看。"],
+          "innerVoice": ["我懂這個概念了。", "不需要一個一個看。", "整體來說就是這樣。"],
           "world": ["模糊", "逃避", "自欺"]
         },
         "spiritual_ego": {
-          "filters": ["過度分析", "完美"],
+          "filters": ["過度分析", "完美", "控制"],
           "main": "「我要非常、非常具體地做。」",
-          "voice": ["每一個物品都要看過。", "我要確定沒漏掉。", "這樣才算做對。"],
+          "innerVoice": ["每一個物品都要看過。", "我要確定沒漏掉。", "這樣才算做對。"],
           "world": ["強迫", "控制", "疲憊"]
         },
         "spirit": {
           "filters": ["具體", "真實", "面對"],
           "quote": "very specifically",
           "main": "具體，是不讓心逃走。",
-          "voice": ["當你說「這張桌子沒意義」，", "你是在面對這張桌子，", "不是想像一個抽象概念。"],
+          "innerVoice": ["當你說「這張桌子沒意義」，", "你是在面對這張桌子，", "不是想像一個抽象概念。"],
           "world": ["真實", "面對", "誠實"]
         }
       }
     },
     {
-      "id": "whatever",
+      "id": "whatever-you-see",
       "en": "whatever you see",
       "zh": "無論你看見什麼",
       "category": "application",
-      "why": "製造例外",
+      "context": "瓦解小我製造例外的習慣",
+      "explanation": "小我的認知系統建立在分類和等級之上。「無論什麼」= 沒有例外。正是那些你想保留的，才是練習的重點。",
       "minds": {
         "ego": {
           "filters": ["例外", "特殊", "選擇"],
           "main": "「有些可以，有些不行。」",
-          "voice": ["桌子可以沒意義。", "但我的孩子不行。", "我來選擇哪些適用。"],
+          "innerVoice": ["桌子可以沒意義。", "但我的孩子不行。", "我來選擇哪些適用。"],
           "world": ["例外", "特殊", "控制"]
         },
         "spiritual_ego": {
           "filters": ["階級", "神聖", "世俗"],
           "main": "「物質沒意義，但靈性的東西有。」",
-          "voice": ["桌椅這些世俗的當然沒意義。", "但我的水晶、靈性書籍...", "這些是神聖的，不一樣。"],
+          "innerVoice": ["桌椅這些世俗的當然沒意義。", "但我的水晶、靈性書籍...", "這些是神聖的，不一樣。"],
           "world": ["靈性物質主義", "階級", "分裂"]
         },
         "spirit": {
           "filters": ["平等", "全部", "無例外"],
           "quote": "whatever you see",
           "main": "無論什麼——沒有例外。",
-          "voice": ["正是那些你想保留的，", "那些你認為「不一樣」的，", "才是練習的重點。"],
+          "innerVoice": ["正是那些你想保留的，", "那些你認為「不一樣」的，", "才是練習的重點。"],
           "world": ["平等", "完整", "自由"]
         }
       }
     },
     {
-      "id": "hand",
+      "id": "this-hand",
       "en": "This hand does not mean anything.",
-      "zh": "這隻手毫無意義",
+      "zh": "這隻手毫無意義。",
       "category": "application",
-      "why": "身體認同的入口",
+      "context": "瓦解身體認同的入口",
+      "explanation": "前面是桌子、椅子。「手」是身體的一部分，這是從「外在物品」進入「身體認同」的轉折點。",
       "minds": {
         "ego": {
           "filters": ["身體", "恐懼", "認同"],
           "main": "「這是我的手！沒有手我怎麼活？」",
-          "voice": ["手是我的一部分。", "沒有手，我就不完整。", "它怎麼可能沒意義？"],
+          "innerVoice": ["手是我的一部分。", "沒有手，我就不完整。", "它怎麼可能沒意義？"],
           "world": ["身體認同", "恐懼", "脆弱"]
         },
         "spiritual_ego": {
           "filters": ["解離", "否認身體"],
-          "main": "「身體本來就是幻相，我不是這個身體。」",
-          "voice": ["我知道我不是身體。", "身體只是暫時的載具。", "（但我還是會怕痛...）"],
+          "main": "「身體本來就是幻相。」",
+          "innerVoice": ["我知道我不是身體。", "身體只是暫時的載具。", "（但我還是會怕痛...）"],
           "world": ["解離", "壓抑", "靈性自責"]
         },
         "spirit": {
           "filters": ["超越", "真我"],
           "quote": "This hand does not mean anything.",
           "main": "你不是你的手。",
-          "voice": ["手只是工具，", "它不能定義你是誰。", "你是使用這隻手的那個覺知。"],
+          "innerVoice": ["手只是工具，", "它不能定義你是誰。", "你是使用這隻手的那個覺知。"],
           "world": ["自由", "完整", "無懼"]
         }
       }
     },
     {
-      "id": "body",
+      "id": "this-body",
       "en": "This body does not mean anything.",
-      "zh": "這個身體毫無意義",
+      "zh": "這個身體毫無意義。",
       "category": "application",
-      "why": "「我是身體」的核心認同",
+      "context": "瓦解「我是身體」的核心認同",
+      "explanation": "這是 Lesson 1 最激進的一句。課程第一天就直接挑戰「我是這個身體」的核心認同。這不是要否定身體，而是讓你看見：你不被身體限制。",
       "minds": {
         "ego": {
           "filters": ["死亡", "存在", "恐懼"],
           "main": "「我的身體沒意義？那我是誰？」",
-          "voice": ["身體就是我。", "沒有身體，我就不存在。", "課程是不是要我否定自己？"],
+          "innerVoice": ["身體就是我。", "沒有身體，我就不存在。", "課程是不是要我否定自己？"],
           "world": ["死亡恐懼", "存在焦慮", "抗拒"]
         },
         "spiritual_ego": {
           "filters": ["否認", "假超越", "分裂"],
           "main": "「對，身體是幻相，我早就知道。」",
-          "voice": ["我不是身體，我是靈魂。", "我不應該在意身體。", "（但生病時還是很怕...）"],
+          "innerVoice": ["我不是身體，我是靈魂。", "我不應該在意身體。", "（但生病時還是很怕...）"],
           "world": ["身心分裂", "羞恥", "自欺"]
         },
         "spirit": {
           "filters": ["真我", "超越身體"],
           "quote": "This body does not mean anything.",
           "main": "你不是這個身體——你遠比它更大。",
-          "voice": ["這不是要你否定身體，", "而是讓你看見：", "你不被身體限制。"],
+          "innerVoice": ["這不是要你否定身體，", "而是讓你看見：", "你不被身體限制。"],
           "world": ["自由", "擴展", "平安"]
         }
       }
     },
     {
-      "id": "face",
+      "id": "that-face",
       "en": "That face does not mean anything.",
-      "zh": "那張臉毫無意義",
+      "zh": "那張臉毫無意義。",
       "category": "application",
-      "why": "對他人的特殊性投射",
+      "context": "瓦解對他人的特殊性投射",
+      "explanation": "從「物品」到「身體」再到「他人」。臉代表身份、關係、情感連結。這句直接挑戰我們對他人的特殊性投射。",
       "minds": {
         "ego": {
           "filters": ["特殊關係", "執著", "愛"],
-          "main": "「那是我愛的人的臉！怎麼可能沒意義？」",
-          "voice": ["那張臉代表我的愛。", "沒有那張臉，我會心碎。", "這一定不適用於人。"],
+          "main": "「那是我愛的人的臉！」",
+          "innerVoice": ["那張臉代表我的愛。", "沒有那張臉，我會心碎。", "這一定不適用於人。"],
           "world": ["特殊性", "執著", "恐懼失去"]
         },
         "spiritual_ego": {
           "filters": ["靈性關係", "業力"],
           "main": "「世俗的臉沒意義，但靈魂伴侶的臉有。」",
-          "voice": ["普通人的臉可以沒意義。", "但我的上師、我的雙生火焰...", "這些關係是神聖的。"],
+          "innerVoice": ["普通人的臉可以沒意義。", "但我的上師、我的雙生火焰...", "這些關係是神聖的。"],
           "world": ["靈性特殊性", "階級", "分裂"]
         },
         "spirit": {
           "filters": ["真愛", "平等", "無特殊"],
           "quote": "That face does not mean anything.",
           "main": "放下特殊性，你才能看見真正的他。",
-          "voice": ["你投射在那張臉上的，", "是你的需要、你的恐懼。", "放下那些，才是真愛。"],
+          "innerVoice": ["你投射在那張臉上的，", "是你的需要、你的恐懼。", "放下那些，才是真愛。"],
           "world": ["真愛", "平等", "自由"]
         }
       }
     },
     {
-      "id": "ritual",
+      "id": "not-ritualistic",
       "en": "should not become ritualistic",
       "zh": "不應該變成儀式化",
       "category": "warning",
-      "why": "形式主義",
+      "context": "瓦解小我把練習變成另一個「要做對」的事",
+      "explanation": "當靈性練習變成機械性的儀式時，它們就失去了轉化的力量，變成了另一種形式的小我控制。",
       "minds": {
         "ego": {
           "filters": ["形式", "正確", "控制"],
           "main": "「我要用正確的方式做。」",
-          "voice": ["一定有個最好的方法。", "我要找到它。", "這樣才會有效。"],
+          "innerVoice": ["一定有個最好的方法。", "我要找到它。", "這樣才會有效。"],
           "world": ["形式主義", "焦慮", "錯失內涵"]
         },
         "spiritual_ego": {
           "filters": ["神聖儀式", "完美"],
           "main": "「我要以神聖的態度做這個練習。」",
-          "voice": ["我要點蠟燭、焚香。", "我要用特別虔誠的心。", "這樣才夠尊重。"],
+          "innerVoice": ["我要點蠟燭、焚香。", "我要用特別虔誠的心。", "這樣才夠尊重。"],
           "world": ["儀式化", "僵化", "靈性物質主義"]
         },
         "spirit": {
           "filters": ["自然", "內涵", "放鬆"],
           "quote": "should not become ritualistic",
           "main": "形式不重要，心態才重要。",
-          "voice": ["不需要特別的姿勢。", "不需要特別的環境。", "只需要願意看。"],
+          "innerVoice": ["不需要特別的姿勢。", "不需要特別的環境。", "只需要願意看。"],
           "world": ["自然", "輕鬆", "真實"]
         }
       }
     },
     {
-      "id": "words",
+      "id": "not-words",
       "en": "Do not concentrate on the words themselves",
       "zh": "不要專注在文字本身",
       "category": "warning",
-      "why": "執著形式",
+      "context": "瓦解小我執著形式、錯過內涵",
+      "explanation": "課程要的是心態的轉變，不是正確的咒語。文字是指月的手指，不是月亮。",
       "minds": {
         "ego": {
           "filters": ["文字", "正確", "執著"],
           "main": "「我要把這句話說對。」",
-          "voice": ["『毫無意義』還是『沒有意義』？", "英文怎麼說？", "我說對了嗎？"],
+          "innerVoice": ["「毫無意義」還是「沒有意義」？", "英文怎麼說？", "我說對了嗎？"],
           "world": ["執著文字", "錯失內涵", "焦慮"]
         },
         "spiritual_ego": {
           "filters": ["咒語", "力量", "形式"],
           "main": "「這些文字有特殊的力量。」",
-          "voice": ["我要用正確的語調。", "這是神聖的話語。", "說對了才會有效果。"],
+          "innerVoice": ["我要用正確的語調。", "這是神聖的話語。", "說對了才會有效果。"],
           "world": ["迷信文字", "形式主義"]
         },
         "spirit": {
           "filters": ["意義", "內涵", "自由"],
           "quote": "Do not concentrate on the words themselves.",
           "main": "文字是指月的手指，不是月亮。",
-          "voice": ["重點是你在看，", "不是你在說什麼。", "怎麼說都可以。"],
+          "innerVoice": ["重點是你在看，", "不是你在說什麼。", "怎麼說都可以。"],
           "world": ["自由", "真實", "內涵"]
         }
       }
     },
     {
-      "id": "order",
+      "id": "no-order",
       "en": "not arranged in any order",
       "zh": "不需要按任何順序",
       "category": "warning",
-      "why": "控制需求",
+      "context": "瓦解小我的控制需求",
+      "explanation": "沒有順序 = 沒有控制 = 沒有「做對」的方法。這直接攻擊小我的核心運作機制。",
       "minds": {
         "ego": {
           "filters": ["控制", "順序", "正確"],
           "main": "「應該有個最佳順序。」",
-          "voice": ["先從哪裡開始？", "從大到小？從近到遠？", "一定有個正確的方法。"],
+          "innerVoice": ["先從哪裡開始？", "從大到小？從近到遠？", "一定有個正確的方法。"],
           "world": ["控制", "焦慮", "拖延"]
         },
         "spiritual_ego": {
           "filters": ["神聖順序", "儀式"],
           "main": "「我要按照神聖的順序來做。」",
-          "voice": ["也許從東方開始...", "順時針方向...", "這樣才有靈性意義。"],
+          "innerVoice": ["也許從東方開始，順時針...", "這樣才有靈性意義。"],
           "world": ["儀式化", "僵化"]
         },
         "spirit": {
           "filters": ["自由", "隨機", "放鬆"],
           "quote": "not arranged in any order",
           "main": "沒有順序——因為沒有什麼比較重要。",
-          "voice": ["隨便看，自然地看。", "順序是小我的控制感。", "這不是考試。"],
+          "innerVoice": ["隨便看，自然地看。", "順序是小我的控制感。", "這不是考試。"],
           "world": ["自由", "放鬆", "信任"]
         }
       }
     },
     {
-      "id": "differences",
+      "id": "no-differences",
       "en": "no allowance should be made for differences",
       "zh": "不允許差異",
       "category": "warning",
-      "why": "比較心、特殊性",
+      "context": "瓦解小我的核心運作——比較、排序、製造特殊",
+      "explanation": "這可能是整個第一課中最深刻的哲學聲明。小我的世界建立在「差異」上——有差異才能比較。「不允許差異」= 拆掉小我的地基。",
       "minds": {
         "ego": {
           "filters": ["差異", "比較", "價值"],
           "main": "「當然有差異！這是常識。」",
-          "voice": ["鑽石和垃圾怎麼可能一樣？", "差異是真實的。", "否認差異是瘋狂的。"],
+          "innerVoice": ["鑽石和垃圾怎麼可能一樣？", "差異是真實的。", "否認差異是瘋狂的。"],
           "world": ["比較", "階級", "永不滿足"]
         },
         "spiritual_ego": {
-          "filters": ["靈性階級", "進化"],
+          "filters": ["靈性階級", "進化", "程度"],
           "main": "「物質平等，但靈性有高低。」",
-          "voice": ["東西是平等的。", "但靈魂有不同進化程度。", "有些人比較覺醒。"],
-          "world": ["靈性階級", "優越感"]
+          "innerVoice": ["東西是平等的。", "但靈魂有不同進化程度。", "有些人比較覺醒。"],
+          "world": ["靈性階級", "優越感", "分裂"]
         },
         "spirit": {
-          "filters": ["平等", "同一源頭"],
+          "filters": ["平等", "同一源頭", "無階級"],
           "quote": "no allowance should be made for differences",
           "main": "不允許差異——因為投射的源頭相同。",
-          "voice": ["這不是說形式相同，", "而是說賦予意義的動作是一樣的。", "看見這個，你就自由了。"],
+          "innerVoice": ["這不是說形式相同，", "而是說賦予意義的動作是一樣的。", "看見這個，你就自由了。"],
           "world": ["平等", "自由", "合一"]
         }
       }
     },
     {
-      "id": "point",
+      "id": "whole-point",
       "en": "That is the whole point of the exercises.",
-      "zh": "這就是練習的全部重點",
+      "zh": "這就是練習的全部重點。",
       "category": "warning",
-      "why": "找藉口逃避",
+      "context": "瓦解小我說「一定還有更深的」來逃避",
+      "explanation": "小我會說「這太簡單了」來逃避真正的練習。耶穌直接說：這就是全部重點——沒有隱藏的、更深的。",
       "minds": {
         "ego": {
           "filters": ["逃避", "找藉口", "懷疑"],
           "main": "「這不可能是全部，一定還有更深的。」",
-          "voice": ["這太簡單了。", "真正的重點一定藏在某處。", "我還沒懂。"],
+          "innerVoice": ["這太簡單了。", "真正的重點一定藏在某處。", "我還沒懂。"],
           "world": ["逃避", "懷疑", "永遠不夠"]
         },
         "spiritual_ego": {
           "filters": ["深奧", "秘密", "階級"],
           "main": "「表面是這樣，但一定有更深的奧義。」",
-          "voice": ["初學者看到的是這個。", "但進階者會看到更深的層次。", "我要找到那個。"],
+          "innerVoice": ["初學者看到的是這個。", "但進階者會看到更深的層次。", "我要找到那個。"],
           "world": ["複雜化", "階級", "錯失當下"]
         },
         "spirit": {
           "filters": ["簡單", "直接", "當下"],
           "quote": "That is the whole point of the exercises.",
           "main": "就是這麼簡單。沒有隱藏的、更深的。",
-          "voice": ["你想要更複雜，", "是因為簡單太可怕。", "就是這個。就是現在。"],
+          "innerVoice": ["你想要更複雜，", "是因為簡單太可怕。", "就是這個。就是現在。"],
           "world": ["簡單", "直接", "當下"]
         }
       }
@@ -354,27 +375,28 @@
     {
       "id": "leisure",
       "en": "A comfortable sense of leisure is essential.",
-      "zh": "從容不迫的心態是必要的",
+      "zh": "從容不迫的心態是必要的。",
       "category": "reminder",
-      "why": "成就導向、急躁",
+      "context": "療癒小我的成就導向、急躁",
+      "explanation": "真正的轉化不是通過努力或掙扎來實現的，而是通過放鬆和允許。想像學游泳：緊張掙扎會下沉，放鬆信任才會浮起來。",
       "minds": {
         "ego": {
-          "filters": ["急躁", "成就", "時間"],
+          "filters": ["急躁", "成就", "時間壓力"],
           "main": "「我沒時間從容。快點完成。」",
-          "voice": ["還有 364 課。", "我要趕進度。", "從容是浪費時間。"],
+          "innerVoice": ["還有 364 課。", "我要趕進度。", "從容是浪費時間。"],
           "world": ["焦慮", "壓力", "永遠不夠"]
         },
         "spiritual_ego": {
-          "filters": ["應該", "表演", "比較"],
+          "filters": ["靈性成就", "比較", "應該"],
           "main": "「我應該要從容。」",
-          "voice": ["好的修行者是從容的。", "我要表現得很從容。", "（但內心很焦慮...）"],
+          "innerVoice": ["好的修行者是從容的。", "我要表現得很從容。", "（但內心其實很焦慮...）"],
           "world": ["假從容", "壓抑", "分裂"]
         },
         "spirit": {
           "filters": ["溫柔", "接納", "當下"],
           "quote": "A comfortable sense of leisure is essential.",
           "main": "從容，因為你不需要到達任何地方。",
-          "voice": ["你已經在你需要在的地方了。", "這個練習不會讓你「變成」什麼。", "它只是幫助你看見你一直是的。"],
+          "innerVoice": ["你已經在你需要在的地方了。", "這個練習不會讓你「變成」什麼。", "它只是幫助你看見你一直是的。"],
           "world": ["平安", "信任", "當下"]
         }
       }
@@ -386,63 +408,71 @@
       { "text": "Now look " },
       { "text": "slowly", "blockId": "slowly" },
       { "text": " around you, and practice applying this idea " },
-      { "text": "very specifically", "blockId": "specifically" },
+      { "text": "very specifically", "blockId": "very-specifically" },
       { "text": " to " },
-      { "text": "whatever you see", "blockId": "whatever" },
+      { "text": "whatever you see", "blockId": "whatever-you-see" },
       { "text": ":" }
     ],
     [
-      { "text": "This table does not mean anything." }
-    ],
-    [
-      { "text": "This chair does not mean anything." }
-    ],
-    [
-      { "text": "This hand does not mean anything.", "blockId": "hand" }
-    ],
-    [
-      { "text": "This pencil does not mean anything." }
-    ],
-    [
-      { "text": "This body does not mean anything.", "blockId": "body" }
-    ],
-    [
-      { "divider": true }
+      { "text": "This table does not mean anything. This chair does not mean anything. " },
+      { "text": "This hand does not mean anything.", "blockId": "this-hand" },
+      { "text": " This foot does not mean anything. This pen does not mean anything." }
     ],
     [
       { "text": "Then look farther away from your immediate area, and apply the idea to a wider range of subjects:" }
     ],
     [
-      { "text": "That door does not mean anything." }
+      { "text": "That door does not mean anything. " },
+      { "text": "That face does not mean anything.", "blockId": "that-face" },
+      { "text": " That lamp does not mean anything. That sign does not mean anything. That shadow does not mean anything." }
     ],
     [
-      { "text": "That face does not mean anything.", "blockId": "face" }
-    ],
-    [
-      { "text": "That light does not mean anything." }
-    ],
-    [
-      { "divider": true }
-    ],
-    [
-      { "text": "The exercises " },
-      { "text": "should not become ritualistic", "blockId": "ritual" },
-      { "text": ", and care should be taken not to allow them to be so. The application of the idea is what is important. " },
-      { "text": "Do not concentrate on the words themselves.", "blockId": "words" }
+      { "text": "Notice that these statements " },
+      { "text": "are not arranged in any order", "blockId": "no-order" },
+      { "text": ", and make " },
+      { "text": "no allowance for differences", "blockId": "no-differences" },
+      { "text": " in the kinds of things to which they are applied. " },
+      { "text": "That is the purpose of the exercise.", "blockId": "whole-point" }
     ],
     [
       { "text": "The exercises " },
-      { "text": "are not arranged in any order", "blockId": "order" },
-      { "text": ", and " },
-      { "text": "no allowance should be made for differences", "blockId": "differences" },
-      { "text": " in the nature of the things to which they are applied. " },
-      { "text": "That is the whole point of the exercises.", "blockId": "point" }
+      { "text": "should not become ritualistic", "blockId": "not-ritualistic" },
+      { "text": ". " },
+      { "text": "Do not concentrate on the words themselves.", "blockId": "not-words" },
+      { "text": " As you practice the idea for the day, use it totally indiscriminately." }
     ],
     [
-      { "divider": true }
+      { "text": "Only be sure that nothing you see is specifically excluded. One thing is like another as far as the application of the idea is concerned." }
     ],
     [
       { "text": "A comfortable sense of leisure is essential.", "blockId": "leisure" }
     ]
-  ]
+  ],
+
+  "difficulties": [
+    {
+      "question": "「這怎麼可能沒有意義？桌子明明是用來放東西的。」",
+      "answer": "區分功能性意義和存在性意義：桌子確實有放東西的功能，但這個功能是人類賦予的，不是桌子固有的本質。在存在的最深層次，桌子和椅子都是同一個意識的顯現——就像波浪和海洋的關係。"
+    },
+    {
+      "question": "「當練習涉及到我珍愛的物品時，我感到不舒服。」",
+      "answer": "課程不是要你否認或壓抑對珍貴物品的感情，而是邀請你認識到：即使是這些感情也是心靈的投射，而非物品本身的固有屬性。處理這種阻抗的關鍵是承認這些感受而不與之戰鬥——就像對待一個受驚的孩子，需要溫和的理解。"
+    },
+    {
+      "question": "「如果一切都沒有意義，生活會變得空虛。」",
+      "answer": "這反映了對課程教導的誤解。課程不是要移除所有意義，而是要移除基於分離的虛假意義，為基於統一的真實意義讓出空間。真正的意義來自愛、慈悲和連結。第一課只是清理工作——清理污垢不是為了摧毀鏡子，而是讓鏡子能夠清晰地反映光明。"
+    }
+  ],
+
+  "practice": {
+    "frequency": "每天不超過兩次，最好是早晨和傍晚。",
+    "duration": "每次不超過一分鐘。",
+    "attitude": "舒適的悠閒感是必要的。這是唯一的要求。當我們帶著緊張或強迫的態度進行練習時，我們實際上是在用小我的方法試圖達到超越小我的目標——這是矛盾和無效的。",
+    "informal": "可以在全天中非正式地應用。當你遇到令人困擾或特別吸引的事物時，可以溫和地提醒自己：「這個也沒有任何意義。」這不應該成為強迫性習慣，而是一種溫和的內在提醒。"
+  },
+
+  "closingQuote": {
+    "text": "記住，你不需要相信這些概念，不需要接受它們，當然也不需要歡迎它們。其中有些，你可能會積極地抗拒。這些都無關緊要，也不會減少它們的功效。但是，不要讓自己在應用這些概念時有例外。不管你對它們的反應如何，都要運用它們。這是它們唯一的要求。",
+    "source": "練習手冊導言"
+  }
 }

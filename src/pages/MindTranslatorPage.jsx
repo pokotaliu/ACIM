@@ -7,6 +7,10 @@ import {
   TranslatorHeader,
   DropZone,
   OutputZone,
+  LessonIntro,
+  CommonDifficulties,
+  PracticeGuide,
+  GentleInvitation,
 } from '../components/mind-translator';
 
 import '../styles/mind-translator.css';
@@ -18,9 +22,13 @@ import '../styles/mind-translator.css';
  *
  * Features:
  * - Core Block (核心宣告): Main lesson statement, clickable
+ * - Lesson Intro (課程簡介): What this lesson does and undoes
  * - Full Text Section (課文原文): Full lesson text with inline highlights
  * - Key Blocks Section (關鍵區塊): Blocks organized by category
  * - Translator: Mind switching and output display
+ * - Common Difficulties (常見困難): FAQ-style expandable questions
+ * - Practice Guide (練習指引): How to practice
+ * - Gentle Invitation (溫柔邀請): Closing quote
  */
 export function MindTranslatorPage() {
   const { lessonId } = useParams();
@@ -32,9 +40,7 @@ export function MindTranslatorPage() {
     selectedBlock,
     isLoading,
     error,
-    allBlocks,
     isCoreSelected,
-    selectBlock,
     selectBlockDirect,
     clearBlock,
     switchMind,
@@ -98,7 +104,7 @@ export function MindTranslatorPage() {
         ← 返回課程列表
       </Link>
 
-      {/* Core Block (核心宣告) - New Format */}
+      {/* 1. Core Block (核心宣告) */}
       {hasNewFormat && (
         <CoreBlock
           lesson={lessonData.lesson}
@@ -108,7 +114,12 @@ export function MindTranslatorPage() {
         />
       )}
 
-      {/* Full Text Section (課文原文) - New Format */}
+      {/* 2. Lesson Intro (課程簡介) */}
+      {lessonData.intro && (
+        <LessonIntro intro={lessonData.intro} />
+      )}
+
+      {/* 3. Full Text Section (課文原文) */}
       {hasNewFormat && lessonData.fullText && (
         <FullTextSection
           fullText={lessonData.fullText}
@@ -118,7 +129,7 @@ export function MindTranslatorPage() {
         />
       )}
 
-      {/* Key Blocks Section (關鍵區塊) - New Format */}
+      {/* 4. Key Blocks Section (關鍵區塊) */}
       {hasNewFormat && (
         <KeyBlocksSection
           keyBlocks={lessonData.keyBlocks}
@@ -127,7 +138,7 @@ export function MindTranslatorPage() {
         />
       )}
 
-      {/* Translator Section */}
+      {/* 5. Mind Translator Section */}
       <section className="mt-translator">
         <TranslatorHeader
           currentMind={currentMind}
@@ -137,7 +148,6 @@ export function MindTranslatorPage() {
 
         <DropZone
           selectedBlock={selectedBlock}
-          onDrop={selectBlock}
           onClear={clearBlock}
         />
 
@@ -147,6 +157,21 @@ export function MindTranslatorPage() {
           hasBlock={!!selectedBlock}
         />
       </section>
+
+      {/* 6. Common Difficulties (常見困難) */}
+      {lessonData.difficulties && (
+        <CommonDifficulties difficulties={lessonData.difficulties} />
+      )}
+
+      {/* 7. Practice Guide (練習指引) */}
+      {lessonData.practice && (
+        <PracticeGuide practice={lessonData.practice} />
+      )}
+
+      {/* 8. Gentle Invitation (溫柔邀請) */}
+      {lessonData.closingQuote && (
+        <GentleInvitation closingQuote={lessonData.closingQuote} />
+      )}
 
       {/* Hint Section */}
       <section className="mt-hint-section">

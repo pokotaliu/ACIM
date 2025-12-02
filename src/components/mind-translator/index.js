@@ -10,5 +10,11 @@ export { default as OutputZone } from './OutputZone';
 export { default as PageHeader } from './PageHeader';
 export { default as TranslatorHeader } from './TranslatorHeader';
 
+// New Lesson Page Components
+export { default as LessonIntro } from './LessonIntro';
+export { default as CommonDifficulties } from './CommonDifficulties';
+export { default as PracticeGuide } from './PracticeGuide';
+export { default as GentleInvitation } from './GentleInvitation';
+
 // Mind System Configuration
 export { MIND_SYSTEM, MIND_TYPES, getMindMeta, getAllMindIds, isValidMindType } from './mindSystem';
