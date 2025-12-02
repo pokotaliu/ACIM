@@ -1,0 +1,667 @@
+/* ===== Lesson Page Styles ===== */
+/* Mobile-first design for ACIM Lesson 1 */
+
+/* ===== CSS Variables ===== */
+.lesson-page-container {
+  /* ===== Base Backgrounds ===== */
+  --lp-bg-deep: #0a0c10;
+  --lp-bg-section: #0c0e12;
+  --lp-bg-card: #0f1116;
+  --lp-bg-hover: rgba(255, 255, 255, 0.02);
+
+  /* ===== Text with Glow ===== */
+  --lp-text-light: #F0E6D3;
+  --lp-text-glow: rgba(240, 230, 211, 0.3);
+  --lp-text-muted: #888;
+  --lp-text-dim: #666;
+
+  /* ===== Block Category Colors ===== */
+  --lp-color-practice: #82C882;
+  --lp-color-application: #C8A064;
+  --lp-color-warning: #C88282;
+  --lp-color-reminder: #82B4DC;
+
+  /* ===== Ego Mind ===== */
+  --lp-ego-bg: #1a1515;
+  --lp-ego-bg-gradient: linear-gradient(135deg, #1a1515 0%, #12151a 100%);
+  --lp-ego-text: #B0A090;
+  --lp-ego-accent: #C9A090;
+  --lp-ego-border: rgba(180, 100, 100, 0.4);
+  --lp-ego-filter-bg: rgba(180, 100, 100, 0.15);
+
+  /* ===== Spiritual Ego Mind ===== */
+  --lp-spiritual-ego-bg: #1a1520;
+  --lp-spiritual-ego-bg-gradient: linear-gradient(135deg, #1a1520 0%, #12151a 100%);
+  --lp-spiritual-ego-text: #B090B0;
+  --lp-spiritual-ego-accent: #C090C9;
+  --lp-spiritual-ego-border: rgba(160, 100, 180, 0.4);
+  --lp-spiritual-ego-filter-bg: rgba(160, 100, 180, 0.15);
+
+  /* ===== Spirit Mind ===== */
+  --lp-spirit-bg: #151a20;
+  --lp-spirit-bg-gradient: linear-gradient(135deg, #151a20 0%, #12151a 100%);
+  --lp-spirit-text: #B0C0D0;
+  --lp-spirit-accent: #90B0C9;
+  --lp-spirit-border: rgba(100, 150, 200, 0.4);
+  --lp-spirit-filter-bg: rgba(100, 150, 200, 0.15);
+
+  /* ===== Fonts ===== */
+  --lp-font-title: 'Cormorant Garamond', serif;
+  --lp-font-body: 'Noto Serif TC', serif;
+
+  /* ===== Mobile Spacing ===== */
+  --lp-spacing-section: 2rem;
+  --lp-spacing-block: 0.6rem;
+  --lp-padding-page: 1rem;
+  --lp-border-radius: 12px;
+
+  /* ===== Transitions ===== */
+  --lp-transition-fast: 0.2s ease;
+  --lp-transition-normal: 0.3s ease;
+  --lp-transition-slow: 0.4s ease;
+}
+
+/* ===== Page Container ===== */
+.lesson-page-container {
+  min-height: 100vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  background: var(--lp-bg-deep);
+  color: var(--lp-text-light);
+  font-family: var(--lp-font-body);
+}
+
+/* ===== Back Button ===== */
+.lp-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid rgba(240, 230, 211, 0.2);
+  border-radius: 9999px;
+  color: var(--lp-text-muted);
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all var(--lp-transition-fast);
+  text-decoration: none;
+  margin: 1rem var(--lp-padding-page);
+}
+
+.lp-back-btn:hover {
+  background: rgba(240, 230, 211, 0.05);
+  border-color: rgba(240, 230, 211, 0.3);
+  color: var(--lp-text-light);
+}
+
+/* ===== Title Section ===== */
+.lp-title-section {
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem var(--lp-padding-page);
+  border-bottom: 1px solid rgba(240, 230, 211, 0.1);
+}
+
+.lp-lesson-number {
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  color: var(--lp-text-dim);
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.lp-title-en {
+  font-family: var(--lp-font-title);
+  font-size: 1.75rem;
+  font-weight: 400;
+  color: var(--lp-text-light);
+  text-shadow: 0 0 30px var(--lp-text-glow);
+  margin: 0 0 0.75rem;
+  line-height: 1.4;
+}
+
+.lp-title-zh {
+  font-size: 1.1rem;
+  color: var(--lp-text-muted);
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .lp-title-en {
+    font-size: 2.25rem;
+  }
+  .lp-title-zh {
+    font-size: 1.25rem;
+  }
+}
+
+/* ===== Block Slider Section ===== */
+.lp-block-section {
+  padding: var(--lp-spacing-section) 0;
+  background: var(--lp-bg-section);
+}
+
+.lp-section-label {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--lp-text-dim);
+  text-align: center;
+  margin-bottom: 1rem;
+  padding: 0 var(--lp-padding-page);
+}
+
+.lp-block-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding: 0 var(--lp-padding-page);
+  gap: 1rem;
+}
+
+.lp-block-slider::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== Block Card ===== */
+.lp-block-card {
+  flex: 0 0 calc(100% - 2rem);
+  scroll-snap-align: center;
+  background: var(--lp-bg-card);
+  border: 1px solid rgba(240, 230, 211, 0.1);
+  border-radius: var(--lp-border-radius);
+  padding: 1.5rem;
+  transition: border-color var(--lp-transition-normal);
+}
+
+.lp-block-card.active {
+  border-color: rgba(240, 230, 211, 0.3);
+}
+
+@media (min-width: 640px) {
+  .lp-block-card {
+    flex: 0 0 calc(85% - 2rem);
+    max-width: 500px;
+  }
+}
+
+.lp-block-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(240, 230, 211, 0.1);
+}
+
+.lp-block-name {
+  font-size: 1.1rem;
+  color: var(--lp-text-light);
+  margin: 0;
+}
+
+.lp-block-subtitle {
+  font-size: 0.8rem;
+  color: var(--lp-text-dim);
+}
+
+.lp-block-quote {
+  margin-bottom: 1.25rem;
+}
+
+.lp-block-quote-en {
+  font-family: var(--lp-font-title);
+  font-size: 1.1rem;
+  font-style: italic;
+  color: var(--lp-text-light);
+  line-height: 1.6;
+  margin: 0 0 0.5rem;
+}
+
+.lp-block-quote-zh {
+  font-size: 0.9rem;
+  color: var(--lp-text-muted);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.lp-block-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(240, 230, 211, 0.15), transparent);
+  margin: 1.25rem 0;
+}
+
+.lp-block-explanation {
+  font-size: 0.9rem;
+  color: var(--lp-text-muted);
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+  white-space: pre-line;
+}
+
+.lp-block-practice-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--lp-color-practice);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.lp-block-practice {
+  font-size: 0.9rem;
+  color: var(--lp-text-light);
+  line-height: 1.8;
+  white-space: pre-line;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--lp-color-practice);
+}
+
+/* ===== Block Indicator ===== */
+.lp-block-indicator {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  padding: 0 var(--lp-padding-page);
+}
+
+.lp-indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lp-text-dim);
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--lp-transition-fast);
+}
+
+.lp-indicator-dot:hover {
+  background: var(--lp-text-muted);
+}
+
+.lp-indicator-dot.active {
+  background: var(--lp-text-light);
+  box-shadow: 0 0 8px var(--lp-text-glow);
+}
+
+/* ===== Mind Section ===== */
+.lp-mind-section {
+  padding: var(--lp-spacing-section) var(--lp-padding-page);
+}
+
+/* ===== Mind Tabs ===== */
+.lp-mind-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: var(--lp-bg-section);
+  border-radius: var(--lp-border-radius);
+  padding: 4px;
+  margin-bottom: 1.5rem;
+}
+
+.lp-mind-tab {
+  flex: 1;
+  max-width: 120px;
+  padding: 0.75rem 0.5rem;
+  border: none;
+  background: transparent;
+  color: var(--lp-text-muted);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: calc(var(--lp-border-radius) - 2px);
+  transition: all var(--lp-transition-fast);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.lp-mind-tab:hover {
+  background: var(--lp-bg-hover);
+}
+
+.lp-mind-tab.active {
+  background: var(--lp-bg-card);
+  color: var(--lp-text-light);
+}
+
+.lp-mind-tab.ego.active {
+  color: var(--lp-ego-accent);
+}
+
+.lp-mind-tab.spiritualEgo.active {
+  color: var(--lp-spiritual-ego-accent);
+}
+
+.lp-mind-tab.spirit.active {
+  color: var(--lp-spirit-accent);
+}
+
+.lp-mind-tab-icon {
+  font-size: 1.25rem;
+}
+
+.lp-mind-tab-label {
+  font-size: 0.75rem;
+}
+
+/* ===== Mind Content ===== */
+.lp-mind-content {
+  padding: 1.5rem;
+  border-radius: var(--lp-border-radius);
+  transition: all var(--lp-transition-normal);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.lp-mind-content.ego {
+  background: var(--lp-ego-bg-gradient);
+  border: 1px solid var(--lp-ego-border);
+}
+
+.lp-mind-content.spiritualEgo {
+  background: var(--lp-spiritual-ego-bg-gradient);
+  border: 1px solid var(--lp-spiritual-ego-border);
+}
+
+.lp-mind-content.spirit {
+  background: var(--lp-spirit-bg-gradient);
+  border: 1px solid var(--lp-spirit-border);
+}
+
+.lp-mind-main {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  margin-bottom: 1.25rem;
+}
+
+.lp-mind-content.ego .lp-mind-main {
+  color: var(--lp-ego-text);
+}
+
+.lp-mind-content.spiritualEgo .lp-mind-main {
+  color: var(--lp-spiritual-ego-text);
+}
+
+.lp-mind-content.spirit .lp-mind-main {
+  color: var(--lp-spirit-text);
+}
+
+.lp-mind-quote {
+  font-family: var(--lp-font-title);
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--lp-text-muted);
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+.lp-mind-content.spirit .lp-mind-quote {
+  border-left: 2px solid var(--lp-spirit-border);
+}
+
+/* ===== Filter Tags ===== */
+.lp-mind-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.lp-filter-tag {
+  padding: 0.25rem 0.75rem;
+  border-radius: 100px;
+  font-size: 0.75rem;
+}
+
+.lp-mind-content.ego .lp-filter-tag {
+  background: var(--lp-ego-filter-bg);
+  color: var(--lp-ego-accent);
+}
+
+.lp-mind-content.spiritualEgo .lp-filter-tag {
+  background: var(--lp-spiritual-ego-filter-bg);
+  color: var(--lp-spiritual-ego-accent);
+}
+
+.lp-mind-content.spirit .lp-filter-tag {
+  background: var(--lp-spirit-filter-bg);
+  color: var(--lp-spirit-accent);
+}
+
+/* ===== Inner Voice ===== */
+.lp-inner-voice {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.lp-inner-voice-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--lp-text-dim);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.lp-inner-voice-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lp-inner-voice-item {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  margin: 0.25rem 0;
+}
+
+.lp-mind-content.ego .lp-inner-voice-item {
+  color: var(--lp-ego-text);
+}
+
+.lp-mind-content.spiritualEgo .lp-inner-voice-item {
+  color: var(--lp-spiritual-ego-text);
+}
+
+.lp-mind-content.spirit .lp-inner-voice-item {
+  color: var(--lp-spirit-text);
+}
+
+/* ===== World Tags ===== */
+.lp-world-section {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.lp-world-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--lp-text-dim);
+  text-transform: uppercase;
+}
+
+.lp-world-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.lp-world-tag {
+  font-size: 0.85rem;
+}
+
+.lp-mind-content.ego .lp-world-tag {
+  color: var(--lp-ego-accent);
+}
+
+.lp-mind-content.spiritualEgo .lp-world-tag {
+  color: var(--lp-spiritual-ego-accent);
+}
+
+.lp-mind-content.spirit .lp-world-tag {
+  color: var(--lp-spirit-accent);
+}
+
+/* ===== Closing Section ===== */
+.lp-closing-section {
+  padding: var(--lp-spacing-section) var(--lp-padding-page);
+  border-top: 1px solid rgba(240, 230, 211, 0.1);
+}
+
+.lp-practice-guide {
+  background: var(--lp-bg-card);
+  border: 1px solid rgba(130, 200, 130, 0.2);
+  border-left: 3px solid var(--lp-color-practice);
+  border-radius: var(--lp-border-radius);
+  padding: 1.25rem;
+  margin-bottom: var(--lp-spacing-section);
+}
+
+.lp-practice-guide-title {
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--lp-color-practice);
+  margin: 0 0 1rem;
+}
+
+.lp-practice-guide-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.lp-practice-guide-item {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.lp-practice-guide-icon {
+  flex-shrink: 0;
+  width: 1.25rem;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.lp-practice-guide-text {
+  color: var(--lp-text-light);
+}
+
+/* ===== Closing Quote ===== */
+.lp-closing-quote {
+  background: linear-gradient(135deg, rgba(100, 150, 200, 0.05) 0%, rgba(100, 150, 200, 0.02) 100%);
+  border: 1px solid var(--lp-spirit-border);
+  border-radius: var(--lp-border-radius);
+  padding: 1.5rem;
+}
+
+.lp-closing-quote-text {
+  font-size: 0.95rem;
+  line-height: 2;
+  color: var(--lp-text-light);
+  margin: 0 0 1rem;
+  text-align: justify;
+}
+
+.lp-closing-quote-source {
+  font-size: 0.85rem;
+  color: var(--lp-spirit-accent);
+  font-style: italic;
+  text-align: right;
+}
+
+/* ===== Loading State ===== */
+.lp-loading,
+.lp-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  color: var(--lp-text-muted);
+  padding: var(--lp-padding-page);
+}
+
+.lp-loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(240, 230, 211, 0.1);
+  border-top-color: var(--lp-text-light);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.lp-error {
+  color: var(--lp-ego-accent);
+  text-align: center;
+}
+
+.lp-error-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Footer ===== */
+.lp-footer {
+  padding: 2rem var(--lp-padding-page);
+  text-align: center;
+  border-top: 1px solid rgba(240, 230, 211, 0.1);
+}
+
+.lp-footer-text {
+  font-size: 0.75rem;
+  color: var(--lp-text-dim);
+}
+
+/* ===== Responsive Adjustments ===== */
+@media (min-width: 768px) {
+  .lp-title-section {
+    min-height: 50vh;
+  }
+
+  .lp-block-card {
+    padding: 2rem;
+  }
+
+  .lp-mind-section {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .lp-closing-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
