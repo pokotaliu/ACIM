@@ -2,13 +2,25 @@ import { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { LessonProvider, useLessonActions } from '../context/LessonContext';
 import { useLessonPageLoader } from '../hooks/useLessonPageLoader';
-import {
-  TitleSection,
-  BlockSlider,
-  MindSection,
-  ClosingSection,
-} from '../components/lesson-page';
+import { BlockSlider, MindSection } from '../components/lesson-page';
 import '../styles/lesson-page.css';
+
+/**
+ * Header component with back button and title
+ */
+function Header({ lesson, title }) {
+  return (
+    <header className="lp-header">
+      <Link to="/" className="lp-back-btn">
+        ← 返回
+      </Link>
+      <div className="lp-header-title">
+        <div className="lp-lesson-number">Lesson {lesson}</div>
+        <h1 className="lp-title-text">{title?.zh || title?.en}</h1>
+      </div>
+    </header>
+  );
+}
 
 /**
  * LessonBlocksPageContent - Inner content (requires LessonProvider)
@@ -28,12 +40,12 @@ function LessonBlocksPageContent({ lessonNumber }) {
   if (loading) {
     return (
       <div className="lesson-page-container">
-        <Link to="/" className="lp-back-btn">
-          ← 返回
-        </Link>
-        <div className="lp-loading">
-          <div className="lp-loading-spinner" />
-          <p>載入課程中...</p>
+        <Header lesson={lessonNumber} title={null} />
+        <div className="lp-main">
+          <div className="lp-loading">
+            <div className="lp-loading-spinner" />
+            <p>載入課程中...</p>
+          </div>
         </div>
       </div>
     );
@@ -43,13 +55,13 @@ function LessonBlocksPageContent({ lessonNumber }) {
   if (error) {
     return (
       <div className="lesson-page-container">
-        <Link to="/" className="lp-back-btn">
-          ← 返回課程列表
-        </Link>
-        <div className="lp-error">
-          <div className="lp-error-icon">⚠</div>
-          <p>無法載入課程 {lessonNumber}</p>
-          <p style={{ fontSize: '0.875rem', opacity: 0.7 }}>{error}</p>
+        <Header lesson={lessonNumber} title={null} />
+        <div className="lp-main">
+          <div className="lp-error">
+            <div className="lp-error-icon">⚠</div>
+            <p>無法載入課程 {lessonNumber}</p>
+            <p style={{ fontSize: '0.875rem', opacity: 0.7 }}>{error}</p>
+          </div>
         </div>
       </div>
     );
@@ -59,12 +71,12 @@ function LessonBlocksPageContent({ lessonNumber }) {
   if (!lesson) {
     return (
       <div className="lesson-page-container">
-        <Link to="/" className="lp-back-btn">
-          ← 返回課程列表
-        </Link>
-        <div className="lp-error">
-          <div className="lp-error-icon">📭</div>
-          <p>課程 {lessonNumber} 尚未建立</p>
+        <Header lesson={lessonNumber} title={null} />
+        <div className="lp-main">
+          <div className="lp-error">
+            <div className="lp-error-icon">📭</div>
+            <p>課程 {lessonNumber} 尚未建立</p>
+          </div>
         </div>
       </div>
     );
@@ -72,32 +84,17 @@ function LessonBlocksPageContent({ lessonNumber }) {
 
   return (
     <div className="lesson-page-container">
-      {/* Back Button */}
-      <Link to="/" className="lp-back-btn">
-        ← 返回
-      </Link>
+      {/* Header with back button and title */}
+      <Header lesson={lesson.lesson} title={lesson.title} />
 
-      {/* Title Section */}
-      <TitleSection lesson={lesson.lesson} title={lesson.title} />
+      {/* Main content area */}
+      <main className="lp-main">
+        {/* Block Slider - Horizontal swipe with center-line trigger */}
+        <BlockSlider />
 
-      {/* Block Slider - Horizontal swipe */}
-      <BlockSlider />
-
-      {/* Mind Section - Tabs + Content */}
-      <MindSection />
-
-      {/* Closing Section - Practice Guide + Quote */}
-      <ClosingSection
-        practiceGuide={lesson.practiceGuide}
-        closingQuote={lesson.closingQuote}
-      />
-
-      {/* Footer */}
-      <footer className="lp-footer">
-        <p className="lp-footer-text">
-          Lesson {lesson.lesson} · A Course in Miracles
-        </p>
-      </footer>
+        {/* Mind Section - Tabs + Content */}
+        <MindSection />
+      </main>
     </div>
   );
 }
@@ -105,6 +102,12 @@ function LessonBlocksPageContent({ lessonNumber }) {
 /**
  * LessonBlocksPage - Main page component
  * Route: /lesson-blocks/:id
+ *
+ * Features:
+ * - Fixed viewport layout (no vertical scrolling)
+ * - Course text blocks with horizontal scrolling
+ * - Mind interpretation that syncs with block trigger
+ * - Mobile-first design with desktop support
  */
 export function LessonBlocksPage() {
   const { id } = useParams();

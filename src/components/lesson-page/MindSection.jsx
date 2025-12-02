@@ -3,13 +3,14 @@ import MindContent from './MindContent';
 
 /**
  * MindSection - Contains mind tabs and content
+ * Uses fixed height layout with scrollable content
  */
 export function MindSection() {
   return (
-    <section className="lp-mind-section">
+    <div className="lp-mind-area">
       <MindTabs />
       <MindContent />
-    </section>
+    </div>
   );
 }
 
