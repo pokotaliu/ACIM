@@ -3,11 +3,12 @@ import { Link, useLocation } from 'react-router-dom';
 export default function Layout({ children }) {
   const location = useLocation();
   const isHomePage = location.pathname === '/' || location.pathname === '/ACIM/' || location.pathname === '/ACIM';
+  const isMindTranslator = location.pathname.startsWith('/mind-translator');
 
   return (
     <div className="min-h-screen">
-      {/* Navigation header - only show on lesson pages */}
-      {!isHomePage && (
+      {/* Navigation header - only show on lesson pages (not on home or mind-translator) */}
+      {!isHomePage && !isMindTranslator && (
         <nav className="fixed top-0 left-0 right-0 z-40 px-6 py-4">
           <Link
             to="/"
