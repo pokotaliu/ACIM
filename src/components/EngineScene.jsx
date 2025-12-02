@@ -33,26 +33,11 @@ export default function EngineScene({
   const elementIndexRef = useRef(0);
   const timeoutRef = useRef(null);
 
-  // Debug: Log state changes
-  useEffect(() => {
-    console.log(`[EngineScene ${scene.id}] State:`, {
-      isActive,
-      isPastScene,
-      animationComplete,
-      visibleElementsCount: visibleElements.size,
-      totalElements: scene.elements.length,
-      elementIndexRef: elementIndexRef.current
-    });
-  }, [isActive, isPastScene, animationComplete, visibleElements, scene.id, scene.elements.length]);
-
   // Animate elements sequentially when scene becomes active
   useEffect(() => {
-    console.log(`[EngineScene ${scene.id}] Animation check:`, { isActive, animationComplete });
     if (!isActive || animationComplete) {
-      console.log(`[EngineScene ${scene.id}] Animation skipped - isActive: ${isActive}, animationComplete: ${animationComplete}`);
       return;
     }
-    console.log(`[EngineScene ${scene.id}] Animation starting!`);
 
     const animateNextElement = () => {
       if (elementIndexRef.current >= scene.elements.length) {
