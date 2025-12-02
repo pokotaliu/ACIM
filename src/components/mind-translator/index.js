@@ -1,7 +1,10 @@
 // Mind Translator Components
 export { default as Block } from './Block';
 export { default as BlocksSection } from './BlocksSection';
+export { default as CoreBlock } from './CoreBlock';
 export { default as DropZone } from './DropZone';
+export { default as FullTextSection } from './FullTextSection';
+export { default as KeyBlocksSection } from './KeyBlocksSection';
 export { default as MindSwitch } from './MindSwitch';
 export { default as OutputZone } from './OutputZone';
 export { default as PageHeader } from './PageHeader';

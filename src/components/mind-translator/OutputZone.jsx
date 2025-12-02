@@ -35,7 +35,12 @@ export function OutputZone({ currentMind, translation, hasBlock }) {
     );
   }
 
-  const { filters, main, quote, innerVoice, outputWorld } = translation;
+  // Support both old (innerVoice/outputWorld) and new (voice/world) field names
+  const filters = translation.filters || [];
+  const main = translation.main || '';
+  const quote = translation.quote;
+  const voice = translation.voice || translation.innerVoice || [];
+  const world = translation.world || translation.outputWorld || [];
 
   return (
     <div className={classNames} role="tabpanel" id={`output-${currentMind}`}>
@@ -68,10 +73,10 @@ export function OutputZone({ currentMind, translation, hasBlock }) {
           <p className="mt-main-translation">{main}</p>
 
           {/* Inner Voice */}
-          {innerVoice && innerVoice.length > 0 && (
+          {voice && voice.length > 0 && (
             <div className="mt-inner-voice">
               <p className="mt-inner-voice-label">內在對話</p>
-              {innerVoice.map((line, index) => (
+              {voice.map((line, index) => (
                 <p key={index} className="mt-inner-voice-line">
                   {line}
                 </p>
@@ -81,10 +86,10 @@ export function OutputZone({ currentMind, translation, hasBlock }) {
         </div>
 
         {/* World Tags */}
-        {outputWorld && outputWorld.length > 0 && (
+        {world && world.length > 0 && (
           <div className="mt-world-tags">
             <span className="mt-world-label">創造的世界：</span>
-            {outputWorld.map((tag, index) => (
+            {world.map((tag, index) => (
               <span key={index} className="mt-world-tag">
                 {tag}
               </span>
