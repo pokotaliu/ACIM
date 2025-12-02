@@ -41,54 +41,66 @@ export default function Home() {
           </p>
         </div>
 
-        {/* Progress or Start section */}
-        <div>
-          {isLoaded && hasProgress ? (
-            // Returning user with progress
-            <div className="text-center">
-              <p className="text-[var(--color-text-muted)] text-sm mb-3">
-                繼續你的學習
-              </p>
-              <p className="font-serif text-lg md:text-xl mb-6">
-                Lesson {continueLessonId}: {continueLesson?.title}
-              </p>
+        {/* Lesson 1 Entry Points */}
+        <div className="w-full max-w-2xl">
+          <p className="text-center text-[var(--color-text-muted)] text-sm mb-6">
+            選擇你的學習方式
+          </p>
 
-              {/* Progress stats */}
-              <div className="flex items-center justify-center gap-6 mb-8 text-sm text-[var(--color-text-muted)]">
+          <p className="text-center font-serif text-lg md:text-xl mb-8">
+            Lesson 1: Nothing I see means anything.
+          </p>
+
+          <div className="grid md:grid-cols-2 gap-4">
+            {/* Immersive Mode */}
+            <Link
+              to="/lesson/1"
+              className="group p-6 border border-[var(--color-border)] rounded-xl hover:border-[var(--color-accent)] transition-all hover:shadow-lg"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">📖</span>
+                <h3 className="font-serif text-lg font-medium">沉浸式閱讀</h3>
+              </div>
+              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
+                逐句呈現課文與肯恩博士的導讀，像聆聽一場溫柔的講座。
+              </p>
+              <span className="text-sm text-[var(--color-accent)] group-hover:underline inline-flex items-center gap-1">
+                進入閱讀
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </Link>
+
+            {/* Mind Translator Mode */}
+            <Link
+              to="/mind-translator/1"
+              className="group p-6 border border-[var(--color-border)] rounded-xl hover:border-[var(--color-accent)] transition-all hover:shadow-lg"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">🔮</span>
+                <h3 className="font-serif text-lg font-medium">心智翻譯器</h3>
+              </div>
+              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
+                探索同一句話如何被小我、靈性小我、聖靈解讀成不同的世界。
+              </p>
+              <span className="text-sm text-[var(--color-accent)] group-hover:underline inline-flex items-center gap-1">
+                探索心智
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </Link>
+          </div>
+
+          {/* Progress stats for returning users */}
+          {isLoaded && hasProgress && (
+            <div className="mt-8 pt-6 border-t border-[var(--color-border)]">
+              <div className="flex items-center justify-center gap-6 text-sm text-[var(--color-text-muted)]">
                 <span>已完成 {stats.completed} / {stats.total} 課</span>
                 <span className="w-px h-4 bg-[var(--color-border)]" />
                 <span>{stats.percentage}%</span>
               </div>
-
-              <Link
-                to={`/lesson/${continueLessonId}`}
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                <span>繼續學習</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-
-              <p className="mt-6 text-sm text-[var(--color-text-muted)]">
-                或從下方選擇其他課程
-              </p>
-            </div>
-          ) : (
-            // New user
-            <div className="text-center">
-              <Link
-                to="/lesson/1"
-                className="btn-primary inline-flex items-center gap-2"
-              >
-                <span>開始旅程</span>
-                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-              <p className="mt-4 text-sm text-[var(--color-text-muted)]">
-                Lesson 1: Nothing I see means anything.
-              </p>
             </div>
           )}
         </div>
@@ -145,12 +157,20 @@ export default function Home() {
                       {section.description.substring(0, 80)}...
                     </p>
                     {section.start === 1 && (
-                      <Link
-                        to="/lesson/1"
-                        className="text-sm text-[var(--color-accent)] hover:underline"
-                      >
-                        開始第一課 →
-                      </Link>
+                      <div className="flex gap-4 text-sm">
+                        <Link
+                          to="/lesson/1"
+                          className="text-[var(--color-accent)] hover:underline"
+                        >
+                          沉浸式閱讀 →
+                        </Link>
+                        <Link
+                          to="/mind-translator/1"
+                          className="text-[var(--color-accent)] hover:underline"
+                        >
+                          心智翻譯器 →
+                        </Link>
+                      </div>
                     )}
                   </div>
                 ))}
