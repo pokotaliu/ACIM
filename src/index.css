@@ -413,6 +413,8 @@ body::before {
 }
 
 .animate-fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
   animation: fadeInUp 1s ease-out forwards;
 }
 
