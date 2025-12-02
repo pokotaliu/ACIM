@@ -1,11 +1,13 @@
-import { useRef, useEffect, useCallback } from 'react';
+import { useRef, useCallback } from 'react';
 import { useBlocks, useCurrentBlockIndex, useLessonActions } from '../../context/LessonContext';
+import { useBlockTrigger } from '../../hooks/useBlockTrigger';
 import BlockCard from './BlockCard';
 import BlockIndicator from './BlockIndicator';
 
 /**
- * BlockSlider - Horizontal sliding block container
+ * BlockSlider - Horizontal sliding block container with center-line trigger
  * Uses CSS scroll-snap for smooth swiping
+ * Triggers block change when block's right edge crosses the center line
  */
 export function BlockSlider() {
   const blocks = useBlocks();
@@ -14,40 +16,19 @@ export function BlockSlider() {
   const sliderRef = useRef(null);
   const isScrollingRef = useRef(false);
 
-  // Handle scroll to detect which block is visible
-  const handleScroll = useCallback(() => {
-    if (!sliderRef.current || isScrollingRef.current) return;
-
-    const slider = sliderRef.current;
-    const scrollLeft = slider.scrollLeft;
-    const cardWidth = slider.offsetWidth;
-
-    // Calculate which card is most visible
-    const newIndex = Math.round(scrollLeft / cardWidth);
-
-    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < blocks.length) {
+  // Handle block change from trigger logic
+  const handleBlockChange = useCallback((newIndex) => {
+    if (!isScrollingRef.current) {
       setBlockIndex(newIndex);
     }
-  }, [currentIndex, blocks.length, setBlockIndex]);
+  }, [setBlockIndex]);
 
-  // Set up scroll event listener
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    let scrollTimeout;
-    const handleScrollDebounced = () => {
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(handleScroll, 50);
-    };
-
-    slider.addEventListener('scroll', handleScrollDebounced, { passive: true });
-
-    return () => {
-      slider.removeEventListener('scroll', handleScrollDebounced);
-      clearTimeout(scrollTimeout);
-    };
-  }, [handleScroll]);
+  // Use the center-line trigger logic
+  useBlockTrigger({
+    containerRef: sliderRef,
+    blockCount: blocks.length,
+    onBlockChange: handleBlockChange,
+  });
 
   // Scroll to block when indicator is clicked
   const scrollToBlock = useCallback((index) => {
@@ -55,12 +36,15 @@ export function BlockSlider() {
 
     isScrollingRef.current = true;
     const slider = sliderRef.current;
-    const cardWidth = slider.offsetWidth;
+    const blockElements = slider.querySelectorAll('[data-block-index]');
 
-    slider.scrollTo({
-      left: index * cardWidth,
-      behavior: 'smooth',
-    });
+    if (blockElements[index]) {
+      blockElements[index].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center',
+      });
+    }
 
     setBlockIndex(index);
 
@@ -73,7 +57,7 @@ export function BlockSlider() {
   if (!blocks.length) return null;
 
   return (
-    <section className="lp-block-section">
+    <div className="lp-block-area">
       <div className="lp-section-label">課文區塊</div>
 
       <div className="lp-block-slider" ref={sliderRef}>
@@ -81,6 +65,7 @@ export function BlockSlider() {
           <BlockCard
             key={block.id}
             block={block}
+            index={index}
             isActive={index === currentIndex}
           />
         ))}
@@ -91,7 +76,7 @@ export function BlockSlider() {
         current={currentIndex}
         onSelect={scrollToBlock}
       />
-    </section>
+    </div>
   );
 }
 

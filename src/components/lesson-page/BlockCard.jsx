@@ -2,13 +2,17 @@
  * BlockCard - Single block card in the slider
  * @param {Object} props
  * @param {import('../../types/lesson.js').LessonBlock} props.block
+ * @param {number} props.index - Block index for trigger logic
  * @param {boolean} props.isActive
  */
-export function BlockCard({ block, isActive }) {
+export function BlockCard({ block, index, isActive }) {
   if (!block) return null;
 
   return (
-    <article className={`lp-block-card ${isActive ? 'active' : ''}`}>
+    <article
+      className={`lp-block-card ${isActive ? 'active' : ''}`}
+      data-block-index={index}
+    >
       {/* Header */}
       <header className="lp-block-header">
         <h3 className="lp-block-name">{block.name}</h3>
