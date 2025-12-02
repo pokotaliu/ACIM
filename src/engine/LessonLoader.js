@@ -8,11 +8,13 @@ import { registerAllCommands } from './commands/register';
 let commandsRegistered = false;
 
 // Eagerly import all lesson files as raw text
-const lessonModules = import.meta.glob('/src/lessons/*.md', {
+const lessonModules = import.meta.glob('../lessons/*.md', {
   query: '?raw',
   import: 'default',
   eager: true
 });
+
+console.log('[LessonLoader] Available lesson modules:', Object.keys(lessonModules));
 
 /**
  * Initialize the lesson loader engine
@@ -39,15 +41,28 @@ export async function loadLesson(lessonId) {
   // Format lesson ID with leading zeros
   const paddedId = String(lessonId).padStart(3, '0');
   const fileName = `lesson${paddedId}.md`;
-  const modulePath = `/src/lessons/${fileName}`;
+
+  let markdown = null;
+  let usedPath = null;
+
+  // Use filename ending to match, avoiding path format issues
+  for (const [path, content] of Object.entries(lessonModules)) {
+    if (path.endsWith(fileName)) {
+      markdown = content;
+      usedPath = path;
+      break;
+    }
+  }
+
+  if (!markdown) {
+    console.error(`[LessonLoader] Lesson file not found: ${fileName}`);
+    console.error('[LessonLoader] Available paths:', Object.keys(lessonModules));
+    throw new Error(`Lesson file not found: ${fileName}`);
+  }
+
+  console.log(`[LessonLoader] Found lesson at: ${usedPath}`);
 
   try {
-    const markdown = lessonModules[modulePath];
-
-    if (!markdown) {
-      throw new Error(`Lesson file not found: ${fileName}`);
-    }
-
     // Parse the markdown
     const lessonData = parser.parse(markdown);
 
@@ -88,9 +103,14 @@ export async function getAvailableLessons() {
 export async function lessonExists(lessonId) {
   const paddedId = String(lessonId).padStart(3, '0');
   const fileName = `lesson${paddedId}.md`;
-  const modulePath = `/src/lessons/${fileName}`;
 
-  return modulePath in lessonModules;
+  for (const path of Object.keys(lessonModules)) {
+    if (path.endsWith(fileName)) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 /**
