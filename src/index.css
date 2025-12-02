@@ -1,5 +1,5 @@
-/* Custom fonts - elegant serif for English text */
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Noto+Serif+TC:wght@400;500;600&display=swap');
+/* Custom fonts - loaded via index.html for non-blocking */
+/* Fonts: Cormorant Garamond (English) + Noto Serif TC (Chinese) */
 
 @import "tailwindcss";
 
