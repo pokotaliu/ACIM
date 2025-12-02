@@ -1,17 +1,11 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useProgress } from '../hooks/useProgress';
-import { getLessonById, hasLessonContent } from '../data/lessons';
-import { lesson1 } from '../data/lesson1';
-import Scene from '../components/Scene';
+import { useLessonLoader } from '../hooks/useLessonLoader';
+import EngineScene from '../components/EngineScene';
 import MusicControl from '../components/MusicControl';
 import PracticeMode from '../components/PracticeMode';
 import ProgressButton from '../components/ProgressButton';
-
-// Map lesson IDs to their content data
-const lessonData = {
-  1: lesson1
-};
 
 export default function Lesson() {
   const { id } = useParams();
@@ -24,14 +18,12 @@ export default function Lesson() {
 
   const { isLessonCompleted, toggleLessonComplete, setCurrentLesson, isLoaded } = useProgress();
 
+  // Load lesson using the engine
+  const { lesson, loading, error } = useLessonLoader(lessonId);
+
   // Scene refs for intersection observer
   const sceneRefs = useRef([]);
   const observerRef = useRef(null);
-
-  // Get lesson info
-  const lessonInfo = getLessonById(lessonId);
-  const lessonContent = lessonData[lessonId];
-  const hasContent = hasLessonContent(lessonId);
 
   // Update current lesson when visiting
   useEffect(() => {
@@ -40,18 +32,17 @@ export default function Lesson() {
     }
   }, [lessonId, setCurrentLesson, isLoaded]);
 
-  // Redirect to home if lesson doesn't exist or has no content
+  // Handle error or missing lesson
   useEffect(() => {
-    if (!lessonInfo) {
-      navigate('/');
-    } else if (!hasContent) {
+    if (error) {
+      console.error('[Lesson] Error loading lesson:', error);
       navigate('/');
     }
-  }, [lessonInfo, hasContent, navigate]);
+  }, [error, navigate]);
 
   // Setup intersection observer for scenes
   useEffect(() => {
-    if (!lessonContent?.scenes) return;
+    if (!lesson?.scenes) return;
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -91,7 +82,7 @@ export default function Lesson() {
         observerRef.current.disconnect();
       }
     };
-  }, [lessonContent?.scenes]);
+  }, [lesson?.scenes]);
 
   const handlePracticeMode = useCallback(() => {
     setShowPractice(true);
@@ -101,12 +92,36 @@ export default function Lesson() {
     navigate(`/lesson/${lessonId + 1}`);
   }, [navigate, lessonId]);
 
-  // Show loading or redirect while checking
-  if (!lessonInfo || !hasContent || !lessonContent) {
+  // Show loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-pulse text-2xl font-serif text-[var(--color-text-muted)]">
+            Loading...
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Show error or redirect
+  if (error || !lesson) {
     return null;
   }
 
   const isCompleted = isLessonCompleted(lessonId);
+
+  // Generate practice prompts from lesson content
+  const practicePrompts = [
+    "緩緩環顧四周...",
+    "選一個物品...",
+    "對它說：這個東西沒有任何意義...",
+    "不要急，保持從容...",
+    "再選另一個物品...",
+    "它也沒有任何意義...",
+    "讓這個想法輕輕地存在..."
+  ];
 
   return (
     <div className="lesson-container">
@@ -115,14 +130,15 @@ export default function Lesson() {
 
       {/* Scenes */}
       <div className="scenes-wrapper">
-        {lessonContent.scenes.map((scene, index) => (
+        {lesson.scenes.map((scene, index) => (
           <div
             key={scene.id}
             ref={(el) => (sceneRefs.current[index] = el)}
             data-scene-index={index}
           >
-            <Scene
+            <EngineScene
               scene={scene}
+              metadata={lesson.metadata}
               isActive={index === activeSceneIndex}
               isPastScene={pastScenes.has(index)}
               onPracticeMode={handlePracticeMode}
@@ -132,8 +148,26 @@ export default function Lesson() {
         ))}
       </div>
 
-      {/* Progress Button - appears after closing scene */}
-      {pastScenes.has(lessonContent.scenes.length - 2) && (
+      {/* Navigation Buttons */}
+      {pastScenes.has(lesson.scenes.length - 1) && (
+        <div className="nav-section fade-in-section is-visible flex justify-center gap-4 py-16">
+          <button
+            onClick={handlePracticeMode}
+            className="btn-scene visible"
+          >
+            進入練習模式
+          </button>
+          <button
+            onClick={handleNextLesson}
+            className="btn-scene visible"
+          >
+            下一課 →
+          </button>
+        </div>
+      )}
+
+      {/* Progress Button */}
+      {pastScenes.has(lesson.scenes.length - 1) && (
         <div className="progress-section fade-in-section is-visible">
           <ProgressButton
             lessonId={lessonId}
@@ -157,7 +191,7 @@ export default function Lesson() {
       {/* Practice Mode Overlay */}
       {showPractice && (
         <PracticeMode
-          prompts={lessonContent.practicePrompts}
+          prompts={practicePrompts}
           onClose={() => setShowPractice(false)}
         />
       )}
