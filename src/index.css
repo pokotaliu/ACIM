@@ -413,9 +413,10 @@ body::before {
 }
 
 .animate-fade-in-up {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s ease-out forwards;
+  animation-name: fadeInUp;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: both;
 }
 
 .animation-delay-300 {
