@@ -1,9 +1,15 @@
+import { useEffect } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Lesson from './pages/Lesson';
 
 function App() {
+  // Signal that React app is ready
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent('react-ready'));
+  }, []);
+
   return (
     <HashRouter>
       <Layout>
