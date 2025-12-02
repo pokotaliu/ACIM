@@ -32,13 +32,12 @@ export default function Lesson() {
     }
   }, [lessonId, setCurrentLesson, isLoaded]);
 
-  // Handle error or missing lesson
+  // Log errors for debugging
   useEffect(() => {
     if (error) {
       console.error('[Lesson] Error loading lesson:', error);
-      navigate('/');
     }
-  }, [error, navigate]);
+  }, [error]);
 
   // Setup intersection observer for scenes
   useEffect(() => {
@@ -105,9 +104,27 @@ export default function Lesson() {
     );
   }
 
-  // Show error or redirect
-  if (error || !lesson) {
-    return null;
+  // Show error message if no lesson loaded
+  if (!lesson) {
+    console.error('[Lesson] No lesson data available, error:', error);
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center max-w-md p-8">
+          <div className="text-2xl font-serif text-[var(--color-text-muted)] mb-4">
+            Unable to load lesson
+          </div>
+          <p className="text-[var(--color-text-muted)] mb-6">
+            {error ? error.message : `Lesson ${lessonId} could not be found.`}
+          </p>
+          <button
+            onClick={() => navigate('/')}
+            className="btn-scene visible"
+          >
+            Return Home
+          </button>
+        </div>
+      </div>
+    );
   }
 
   const isCompleted = isLessonCompleted(lessonId);
