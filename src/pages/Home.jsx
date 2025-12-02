@@ -23,20 +23,20 @@ export default function Home() {
       <header className="min-h-[80vh] flex flex-col items-center justify-center px-6 py-20">
         {/* Decorative line */}
         <div
-          className="w-16 h-px bg-[var(--color-accent)] mb-12 opacity-0 animate-fade-in-up"
+          className="w-16 h-px bg-[var(--color-accent)] mb-12 animate-fade-in-up"
           style={{ animationDelay: '300ms' }}
         />
 
         {/* Main title */}
         <h1
-          className="text-english text-4xl md:text-5xl lg:text-6xl text-center font-medium leading-tight mb-4 opacity-0 animate-fade-in-up"
+          className="text-english text-4xl md:text-5xl lg:text-6xl text-center font-medium leading-tight mb-4 animate-fade-in-up"
           style={{ animationDelay: '500ms' }}
         >
           A Course in Miracles
         </h1>
 
         <p
-          className="text-english text-xl md:text-2xl text-[var(--color-text-muted)] text-center mb-12 opacity-0 animate-fade-in-up"
+          className="text-english text-xl md:text-2xl text-[var(--color-text-muted)] text-center mb-12 animate-fade-in-up"
           style={{ animationDelay: '700ms' }}
         >
           Workbook Lessons
@@ -44,7 +44,7 @@ export default function Home() {
 
         {/* Inspirational quote */}
         <div
-          className="max-w-xl text-center mb-16 opacity-0 animate-fade-in-up"
+          className="max-w-xl text-center mb-16 animate-fade-in-up"
           style={{ animationDelay: '900ms' }}
         >
           <p className="text-chinese text-lg text-[var(--color-text-muted)] leading-relaxed mb-2">
@@ -57,7 +57,7 @@ export default function Home() {
 
         {/* Progress or Start section */}
         <div
-          className="opacity-0 animate-fade-in-up"
+          className="animate-fade-in-up"
           style={{ animationDelay: '1100ms' }}
         >
           {isLoaded && hasProgress ? (
@@ -112,7 +112,7 @@ export default function Home() {
 
         {/* Scroll indicator */}
         <div
-          className="absolute bottom-12 flex flex-col items-center gap-2 text-[var(--color-text-muted)] opacity-0 animate-fade-in-up"
+          className="absolute bottom-12 flex flex-col items-center gap-2 text-[var(--color-text-muted)] animate-fade-in-up"
           style={{ animationDelay: '1500ms' }}
         >
           <span className="text-xs tracking-wider">瀏覽所有課程</span>

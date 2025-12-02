@@ -3,13 +3,13 @@ export default function LessonHeader({ number, title, titleChinese }) {
     <header className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
       {/* Decorative line */}
       <div
-        className="w-16 h-px bg-[var(--color-accent)] mb-12 opacity-0 animate-fade-in-up"
+        className="w-16 h-px bg-[var(--color-accent)] mb-12 animate-fade-in-up"
         style={{ animationDelay: '500ms' }}
       />
 
       {/* Lesson number */}
       <p
-        className="text-[var(--color-text-muted)] text-sm tracking-[0.3em] uppercase mb-6 opacity-0 animate-fade-in-up"
+        className="text-[var(--color-text-muted)] text-sm tracking-[0.3em] uppercase mb-6 animate-fade-in-up"
         style={{ animationDelay: '800ms' }}
       >
         Lesson {number}
@@ -17,7 +17,7 @@ export default function LessonHeader({ number, title, titleChinese }) {
 
       {/* English title */}
       <h1
-        className="text-english text-3xl md:text-4xl lg:text-5xl text-center font-medium leading-tight mb-6 max-w-3xl opacity-0 animate-fade-in-up"
+        className="text-english text-3xl md:text-4xl lg:text-5xl text-center font-medium leading-tight mb-6 max-w-3xl animate-fade-in-up"
         style={{ animationDelay: '1100ms' }}
       >
         {title}
@@ -25,7 +25,7 @@ export default function LessonHeader({ number, title, titleChinese }) {
 
       {/* Chinese title */}
       <h2
-        className="text-chinese text-xl md:text-2xl text-[var(--color-text-muted)] text-center mb-16 opacity-0 animate-fade-in-up"
+        className="text-chinese text-xl md:text-2xl text-[var(--color-text-muted)] text-center mb-16 animate-fade-in-up"
         style={{ animationDelay: '1400ms' }}
       >
         {titleChinese}
@@ -33,8 +33,8 @@ export default function LessonHeader({ number, title, titleChinese }) {
 
       {/* Scroll indicator */}
       <div
-        className="flex flex-col items-center gap-2 text-[var(--color-text-muted)] opacity-0 animate-fade-in-up"
-        style={{ animationDelay: '2000ms', animationFillMode: 'forwards' }}
+        className="flex flex-col items-center gap-2 text-[var(--color-text-muted)] animate-fade-in-up"
+        style={{ animationDelay: '2000ms' }}
       >
         <span className="text-xs tracking-wider">往下閱讀</span>
         <svg
