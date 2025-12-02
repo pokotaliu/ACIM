@@ -1,0 +1,105 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Mind Translator Lesson Data",
+  "description": "Schema for ACIM Mind Translator lesson data files",
+  "type": "object",
+  "required": ["lesson", "title_en", "title_zh", "availableMinds", "blocks"],
+  "properties": {
+    "lesson": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 365,
+      "description": "Lesson number (1-365)"
+    },
+    "title_en": {
+      "type": "string",
+      "description": "English lesson title"
+    },
+    "title_zh": {
+      "type": "string",
+      "description": "Chinese lesson title"
+    },
+    "keyword": {
+      "type": "string",
+      "description": "Keyword in Chinese"
+    },
+    "keyword_en": {
+      "type": "string",
+      "description": "Keyword in English"
+    },
+    "availableMinds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["ego", "spiritual_ego", "spirit"]
+      },
+      "minItems": 1,
+      "description": "Available mind types for this lesson"
+    },
+    "blocks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/LessonBlock"
+      },
+      "minItems": 1,
+      "description": "Array of lesson blocks"
+    }
+  },
+  "definitions": {
+    "LessonBlock": {
+      "type": "object",
+      "required": ["id", "text_en", "minds"],
+      "properties": {
+        "id": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Block ID"
+        },
+        "text_en": {
+          "type": "string",
+          "description": "English lesson text"
+        },
+        "text_zh": {
+          "type": "string",
+          "description": "Chinese translation"
+        },
+        "minds": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/MindTranslation"
+          },
+          "description": "Mind translations keyed by mind type"
+        }
+      }
+    },
+    "MindTranslation": {
+      "type": "object",
+      "required": ["filters", "main", "innerVoice", "outputWorld"],
+      "properties": {
+        "filters": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Filter tags"
+        },
+        "main": {
+          "type": "string",
+          "description": "Main translation text"
+        },
+        "quote": {
+          "type": "string",
+          "description": "Optional original quote"
+        },
+        "innerVoice": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Inner voice dialogue lines"
+        },
+        "outputWorld": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Output world tags"
+        }
+      }
+    }
+  }
+}
