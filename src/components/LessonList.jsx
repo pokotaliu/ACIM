@@ -110,24 +110,43 @@ export default function LessonList({ completedLessons = [], isLoaded = true }) {
                           const hasContent = hasLessonContent(lesson.id);
 
                           return hasContent ? (
-                            <Link
+                            <div
                               key={lesson.id}
-                              to={`/lesson/${lesson.id}`}
-                              className="flex items-center gap-3 py-2 px-3 -mx-3 rounded-md hover:bg-[var(--color-bg-dark)]/50 transition-colors group"
+                              className="py-3 px-3 -mx-3 rounded-md hover:bg-[var(--color-bg-dark)]/30 transition-colors"
                             >
-                              {/* Lesson number */}
-                              <span className="w-8 text-right text-[var(--color-text-muted)] text-sm font-mono">
-                                {lesson.id}
-                              </span>
+                              <div className="flex items-center gap-3 mb-2">
+                                {/* Lesson number */}
+                                <span className="w-8 text-right text-[var(--color-text-muted)] text-sm font-mono">
+                                  {lesson.id}
+                                </span>
 
-                              {/* Lesson title */}
-                              <span className="flex-1 text-sm text-english group-hover:text-[var(--color-accent)] transition-colors">
-                                {lesson.title}
-                              </span>
+                                {/* Lesson title */}
+                                <span className="flex-1 text-sm text-english">
+                                  {lesson.title}
+                                </span>
 
-                              {/* Completion indicator */}
-                              <span className={`w-2 h-2 rounded-full flex-shrink-0 ${isCompleted ? 'bg-[var(--color-accent)]' : 'border border-[var(--color-border)]'}`} />
-                            </Link>
+                                {/* Completion indicator */}
+                                <span className={`w-2 h-2 rounded-full flex-shrink-0 ${isCompleted ? 'bg-[var(--color-accent)]' : 'border border-[var(--color-border)]'}`} />
+                              </div>
+
+                              {/* Two buttons for lessons with content */}
+                              <div className="flex gap-2 ml-11">
+                                <Link
+                                  to={`/lesson/${lesson.id}`}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full bg-[var(--color-accent)] text-white hover:bg-[#7a6548] transition-colors"
+                                >
+                                  <span>🎬</span>
+                                  <span>沉浸體驗</span>
+                                </Link>
+                                <Link
+                                  to={`/study/${lesson.id}`}
+                                  className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs rounded-full border border-[var(--color-border)] text-[var(--color-text-muted)] hover:bg-[var(--color-bg-dark)] transition-colors"
+                                >
+                                  <span>📖</span>
+                                  <span>靜態研讀</span>
+                                </Link>
+                              </div>
+                            </div>
                           ) : (
                             <div
                               key={lesson.id}

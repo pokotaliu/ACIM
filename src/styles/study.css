@@ -1,0 +1,335 @@
+.study-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background: #F5F0E8;
+  min-height: 100vh;
+}
+
+.study-page.error,
+.study-page.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 50vh;
+  text-align: center;
+  color: var(--color-text-muted);
+}
+
+.study-page.error a {
+  margin-top: 1rem;
+  color: var(--color-accent);
+  text-decoration: none;
+}
+
+.study-page.error a:hover {
+  text-decoration: underline;
+}
+
+.study-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #D4CDC4;
+}
+
+.study-header h1 {
+  font-family: Georgia, 'Playfair Display', serif;
+  font-size: 2rem;
+  color: #3D3630;
+  margin-bottom: 0.5rem;
+}
+
+.study-header h2 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.5rem;
+  color: #5A524A;
+  font-weight: normal;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 1rem;
+  color: #7A726A;
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: #3D3630;
+}
+
+.original-text {
+  background: #EDE8E0;
+  padding: 1.5rem 2rem;
+  border-radius: 8px;
+  margin-bottom: 3rem;
+}
+
+.original-text h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1rem;
+  color: #7A726A;
+  margin-bottom: 1rem;
+  font-weight: normal;
+}
+
+.original-text blockquote {
+  font-family: Georgia, serif;
+  font-style: italic;
+  color: #5A524A;
+  margin: 0;
+  line-height: 1.8;
+}
+
+/* Left-right comparison container */
+.comparison-container {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0;
+  margin-bottom: 3rem;
+}
+
+.divider {
+  width: 1px;
+  background: linear-gradient(to bottom, transparent, #D4CDC4, transparent);
+  margin: 0 2rem;
+}
+
+.ego-teaching,
+.spirit-teaching {
+  padding: 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid;
+}
+
+.section-header.ego {
+  border-color: #C9A0A0;
+}
+
+.section-header.spirit {
+  border-color: #A0B4C9;
+}
+
+.section-header .icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-header h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.25rem;
+  margin: 0;
+  color: #3D3630;
+}
+
+.section-header .subtitle {
+  font-family: Georgia, serif;
+  font-size: 0.875rem;
+  color: #7A726A;
+  font-style: italic;
+}
+
+.section-content {
+  font-family: 'Noto Serif TC', serif;
+  line-height: 1.9;
+  color: #3D3630;
+}
+
+.section-content h4 {
+  font-size: 1.1rem;
+  margin: 1.5rem 0 0.75rem;
+  color: #4A443E;
+}
+
+.section-content h5 {
+  font-size: 1rem;
+  margin: 1.25rem 0 0.5rem;
+  color: #5A524A;
+}
+
+.section-content blockquote {
+  background: #EDE8E0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid #C9B89A;
+  margin: 1rem 0;
+  font-style: italic;
+  color: #5A524A;
+}
+
+.section-content ul {
+  padding-left: 1.25rem;
+}
+
+.section-content li {
+  margin-bottom: 0.5rem;
+}
+
+/* Practice section */
+.practice-section,
+.position-section {
+  background: #FDFCFA;
+  padding: 2rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.practice-section h3,
+.position-section h3 {
+  font-family: 'Noto Serif TC', serif;
+  font-size: 1.25rem;
+  color: #3D3630;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #E8E2DA;
+}
+
+.practice-section p,
+.position-section p {
+  line-height: 1.8;
+  color: #3D3630;
+}
+
+/* Lesson navigation */
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 2rem;
+  border-top: 1px solid #D4CDC4;
+}
+
+.lesson-nav a {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lesson-nav .prev,
+.lesson-nav .next {
+  background: #EDE8E0;
+  color: #5A524A;
+}
+
+.lesson-nav .prev:hover,
+.lesson-nav .next:hover {
+  background: #E4DED4;
+}
+
+.lesson-nav .immersive {
+  background: #3D3630;
+  color: #F5F0E8;
+}
+
+.lesson-nav .immersive:hover {
+  background: #4A443E;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .study-page {
+    padding: 1rem;
+  }
+
+  .study-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .study-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .comparison-container {
+    grid-template-columns: 1fr;
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+    margin: 2rem 0;
+  }
+
+  .lesson-nav {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .lesson-nav a {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Subtle animation effects */
+.section-content blockquote {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.section-header {
+  animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll fade-in effect (optional, using Intersection Observer) */
+.ego-teaching,
+.spirit-teaching {
+  opacity: 0;
+  animation: slideIn 0.8s ease-out forwards;
+}
+
+.ego-teaching {
+  animation-delay: 0.2s;
+}
+
+.spirit-teaching {
+  animation-delay: 0.4s;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.spirit-teaching {
+  animation-name: slideInRight;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
