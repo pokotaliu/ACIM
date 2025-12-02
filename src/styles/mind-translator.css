@@ -3,42 +3,79 @@
 
 /* ===== CSS Variables ===== */
 .mind-translator-page {
-  --mt-bg-deep: #0D1117;
-  --mt-bg-section: #12151a;
-  --mt-bg-card: #1a1a2e;
+  /* ===== Backgrounds ===== */
+  --mt-bg-deep: #0a0c10;
+  --mt-bg-section: #0c0e12;
+  --mt-bg-card: #0f1116;
 
-  /* Text with glow */
+  /* ===== Text with glow ===== */
   --mt-text-light: #F0E6D3;
   --mt-text-glow: rgba(240, 230, 211, 0.3);
-  --mt-text-muted: #666;
-  --mt-text-hint: #556;
+  --mt-text-muted: #888;
+  --mt-text-hint: #666;
+  --mt-text-dim: #555;
 
-  /* Borders */
+  /* ===== Borders ===== */
   --mt-border-subtle: #2a2a3a;
+  --mt-border-light: #1a1a2a;
 
-  /* Ego - Dark Red */
-  --mt-ego-bg: #1a1515;
+  /* ===== Block Category Colors ===== */
+  --mt-practice: #82C882;
+  --mt-practice-bg: rgba(130, 200, 130, 0.1);
+  --mt-practice-border: rgba(130, 200, 130, 0.6);
+  --mt-practice-glow: rgba(130, 200, 130, 0.2);
+
+  --mt-application: #C8A064;
+  --mt-application-bg: rgba(200, 160, 100, 0.1);
+  --mt-application-border: rgba(200, 160, 100, 0.6);
+  --mt-application-glow: rgba(200, 160, 100, 0.2);
+
+  --mt-warning: #C88282;
+  --mt-warning-bg: rgba(200, 130, 130, 0.1);
+  --mt-warning-border: rgba(200, 130, 130, 0.6);
+  --mt-warning-glow: rgba(200, 130, 130, 0.2);
+
+  --mt-reminder: #82B4DC;
+  --mt-reminder-bg: rgba(130, 180, 220, 0.1);
+  --mt-reminder-border: rgba(130, 180, 220, 0.6);
+  --mt-reminder-glow: rgba(130, 180, 220, 0.2);
+
+  /* ===== Ego - Dark Red ===== */
+  --mt-ego-bg: #141010;
   --mt-ego-bg-hover: #2d1f1f;
-  --mt-ego-text: #A89890;
-  --mt-ego-accent: #C9A090;
-  --mt-ego-border: rgba(180, 100, 100, 0.3);
+  --mt-ego-text: #a08070;
+  --mt-ego-accent: #c0a090;
+  --mt-ego-border: rgba(180, 100, 100, 0.4);
   --mt-ego-glow: rgba(180, 100, 100, 0.2);
 
-  /* Spiritual Ego - Dark Purple */
-  --mt-spiritual-ego-bg: #1a1520;
+  /* ===== Spiritual Ego - Dark Purple ===== */
+  --mt-spiritual-ego-bg: #121014;
   --mt-spiritual-ego-bg-hover: #2d1f2a;
-  --mt-spiritual-ego-text: #A890A8;
-  --mt-spiritual-ego-accent: #C090C9;
-  --mt-spiritual-ego-border: rgba(160, 100, 180, 0.3);
+  --mt-spiritual-ego-text: #9070a0;
+  --mt-spiritual-ego-accent: #c090c0;
+  --mt-spiritual-ego-border: rgba(160, 100, 180, 0.4);
   --mt-spiritual-ego-glow: rgba(160, 100, 180, 0.2);
 
-  /* Spirit - Blue */
-  --mt-spirit-bg: #151a20;
+  /* ===== Spirit - Blue ===== */
+  --mt-spirit-bg: #101214;
   --mt-spirit-bg-hover: #1f2a35;
-  --mt-spirit-text: #C8D0D8;
-  --mt-spirit-accent: #90B0C9;
-  --mt-spirit-border: rgba(100, 150, 200, 0.3);
+  --mt-spirit-text: #7090a0;
+  --mt-spirit-accent: #90b0c0;
+  --mt-spirit-border: rgba(100, 150, 200, 0.4);
   --mt-spirit-glow: rgba(100, 150, 200, 0.2);
+
+  /* ===== Fonts ===== */
+  --mt-font-title: 'Cormorant Garamond', serif;
+  --mt-font-body: 'Noto Serif TC', serif;
+
+  /* ===== Spacing ===== */
+  --mt-spacing-section: 3rem;
+  --mt-spacing-block: 0.8rem;
+
+  /* ===== Transitions ===== */
+  --mt-transition-fast: 0.2s ease;
+  --mt-transition-normal: 0.3s ease;
+  --mt-transition-slow: 0.4s ease;
 }
 
 /* ===== Page Container ===== */
@@ -653,6 +690,351 @@
   color: var(--mt-text-light);
 }
 
+/* ===== Core Block (核心宣告) ===== */
+.mt-core-section {
+  text-align: center;
+  padding: 2rem 0 3rem;
+  border-bottom: 1px solid var(--mt-border-light);
+  margin-bottom: 3rem;
+}
+
+.mt-lesson-num {
+  font-family: var(--mt-font-title);
+  font-size: 0.8rem;
+  letter-spacing: 0.5em;
+  color: var(--mt-text-dim);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.mt-core-block {
+  display: inline-block;
+  padding: 1.5rem 3rem;
+  background: linear-gradient(135deg, rgba(240, 230, 211, 0.08) 0%, rgba(240, 230, 211, 0.03) 100%);
+  border: 1px solid rgba(240, 230, 211, 0.2);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all var(--mt-transition-slow);
+  position: relative;
+}
+
+.mt-core-block:hover {
+  background: linear-gradient(135deg, rgba(240, 230, 211, 0.12) 0%, rgba(240, 230, 211, 0.05) 100%);
+  border-color: rgba(240, 230, 211, 0.4);
+  box-shadow: 0 0 40px rgba(240, 230, 211, 0.1);
+  transform: translateY(-2px);
+}
+
+.mt-core-block.selected {
+  background: linear-gradient(135deg, rgba(240, 230, 211, 0.15) 0%, rgba(240, 230, 211, 0.08) 100%);
+  border-color: rgba(240, 230, 211, 0.5);
+  box-shadow: 0 0 50px rgba(240, 230, 211, 0.15);
+}
+
+.mt-core-block .en {
+  font-family: var(--mt-font-title);
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: var(--mt-text-light);
+  text-shadow: 0 0 30px var(--mt-text-glow);
+  margin-bottom: 0.5rem;
+}
+
+.mt-core-block .zh {
+  font-size: 1rem;
+  color: var(--mt-text-muted);
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all var(--mt-transition-normal);
+}
+
+.mt-core-block:hover .zh,
+.mt-core-block.selected .zh {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mt-core-block .note {
+  font-size: 0.85rem;
+  color: var(--mt-text-hint);
+  font-style: italic;
+  margin-top: 1rem;
+  opacity: 0;
+  transition: all var(--mt-transition-normal) 0.1s;
+}
+
+.mt-core-block:hover .note,
+.mt-core-block.selected .note {
+  opacity: 1;
+}
+
+.mt-core-label {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--mt-bg-deep);
+  padding: 0 0.8rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: #D4B870;
+}
+
+/* ===== Section Headers ===== */
+.mt-section-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.mt-section-header::before,
+.mt-section-header::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--mt-border-subtle), transparent);
+}
+
+.mt-section-title {
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  color: var(--mt-text-hint);
+  white-space: nowrap;
+}
+
+/* ===== Full Text Section (課文原文) ===== */
+.mt-text-section {
+  margin-bottom: 3rem;
+  padding: 0 1.5rem;
+}
+
+.mt-text-content {
+  font-family: var(--mt-font-title);
+  font-size: 1.15rem;
+  line-height: 2.2;
+  color: #a0a0a0;
+  padding: 0 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.mt-text-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* Inline Key Blocks in Full Text */
+.mt-key-inline {
+  color: var(--mt-text-light);
+  background: rgba(240, 230, 211, 0.06);
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all var(--mt-transition-normal);
+  border-bottom: 2px solid transparent;
+  position: relative;
+}
+
+.mt-key-inline:hover {
+  background: rgba(240, 230, 211, 0.12);
+  box-shadow: 0 0 15px rgba(240, 230, 211, 0.15);
+}
+
+.mt-key-inline.selected {
+  background: rgba(240, 230, 211, 0.15);
+  box-shadow: 0 0 20px rgba(240, 230, 211, 0.2);
+}
+
+/* Category-specific inline styles */
+.mt-key-inline.practice { border-bottom-color: var(--mt-practice-border); }
+.mt-key-inline.application { border-bottom-color: var(--mt-application-border); }
+.mt-key-inline.warning { border-bottom-color: var(--mt-warning-border); }
+.mt-key-inline.reminder { border-bottom-color: var(--mt-reminder-border); }
+
+.mt-key-inline:hover.practice { box-shadow: 0 0 15px var(--mt-practice-glow); }
+.mt-key-inline:hover.application { box-shadow: 0 0 15px var(--mt-application-glow); }
+.mt-key-inline:hover.warning { box-shadow: 0 0 15px var(--mt-warning-glow); }
+.mt-key-inline:hover.reminder { box-shadow: 0 0 15px var(--mt-reminder-glow); }
+
+/* Tooltip for inline keys */
+.mt-key-inline::after {
+  content: attr(data-zh);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(5px);
+  background: var(--mt-bg-card);
+  color: #ccc;
+  padding: 0.4rem 0.8rem;
+  border-radius: 4px;
+  font-family: var(--mt-font-body);
+  font-size: 0.85rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--mt-transition-fast);
+  z-index: 10;
+  border: 1px solid var(--mt-border-subtle);
+}
+
+.mt-key-inline:hover::after {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-5px);
+}
+
+/* Text divider */
+.mt-text-divider {
+  text-align: center;
+  margin: 2rem 0;
+  color: #333;
+  font-size: 0.8rem;
+  letter-spacing: 0.3em;
+}
+
+/* ===== Key Blocks Section ===== */
+.mt-keyblocks-section {
+  margin-bottom: 3rem;
+  padding: 0 1.5rem;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mt-category {
+  margin-bottom: 2rem;
+}
+
+.mt-category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.mt-category-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.mt-category-dot.practice { background: var(--mt-practice); }
+.mt-category-dot.application { background: var(--mt-application); }
+.mt-category-dot.warning { background: var(--mt-warning); }
+.mt-category-dot.reminder { background: var(--mt-reminder); }
+
+.mt-category-name {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+}
+
+.mt-category-name.practice { color: var(--mt-practice); }
+.mt-category-name.application { color: var(--mt-application); }
+.mt-category-name.warning { color: var(--mt-warning); }
+.mt-category-name.reminder { color: var(--mt-reminder); }
+
+.mt-category-desc {
+  font-size: 0.75rem;
+  color: var(--mt-text-hint);
+  margin-left: auto;
+}
+
+.mt-blocks-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* Block Item with Category */
+.mt-block-item {
+  padding: 0.7rem 1.2rem;
+  background: var(--mt-bg-card);
+  border: 1px solid var(--mt-border-subtle);
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all var(--mt-transition-normal);
+}
+
+.mt-block-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.mt-block-item.selected {
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Category borders */
+.mt-block-item.practice { border-left: 3px solid var(--mt-practice-border); }
+.mt-block-item.application { border-left: 3px solid var(--mt-application-border); }
+.mt-block-item.warning { border-left: 3px solid var(--mt-warning-border); }
+.mt-block-item.reminder { border-left: 3px solid var(--mt-reminder-border); }
+
+.mt-block-item:hover.practice,
+.mt-block-item.selected.practice { border-color: var(--mt-practice); box-shadow: 0 5px 20px var(--mt-practice-glow); }
+.mt-block-item:hover.application,
+.mt-block-item.selected.application { border-color: var(--mt-application); box-shadow: 0 5px 20px var(--mt-application-glow); }
+.mt-block-item:hover.warning,
+.mt-block-item.selected.warning { border-color: var(--mt-warning); box-shadow: 0 5px 20px var(--mt-warning-glow); }
+.mt-block-item:hover.reminder,
+.mt-block-item.selected.reminder { border-color: var(--mt-reminder); box-shadow: 0 5px 20px var(--mt-reminder-glow); }
+
+.mt-block-item .en {
+  font-family: var(--mt-font-title);
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--mt-text-light);
+}
+
+.mt-block-item .zh {
+  font-size: 0.8rem;
+  color: #777;
+  margin-top: 0.3rem;
+}
+
+.mt-block-item .why {
+  font-size: 0.7rem;
+  color: var(--mt-text-dim);
+  margin-top: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--mt-border-subtle);
+  display: none;
+}
+
+.mt-block-item:hover .why {
+  display: block;
+}
+
+/* ===== Legend ===== */
+.mt-legend {
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+  font-size: 0.75rem;
+  color: var(--mt-text-hint);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+.mt-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.mt-legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+}
+
+.mt-legend-dot.practice { background: var(--mt-practice); }
+.mt-legend-dot.application { background: var(--mt-application); }
+.mt-legend-dot.warning { background: var(--mt-warning); }
+.mt-legend-dot.reminder { background: var(--mt-reminder); }
+
 /* ===== Responsive Adjustments ===== */
 @media (max-width: 640px) {
   .mt-block {
@@ -671,5 +1053,26 @@
 
   .mt-mind-switch {
     justify-content: center;
+  }
+
+  .mt-core-block {
+    padding: 1rem 1.5rem;
+  }
+
+  .mt-core-block .en {
+    font-size: 1.4rem;
+  }
+
+  .mt-translator-header {
+    flex-direction: column;
+  }
+
+  .mt-mind-tabs {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .mt-block-item {
+    width: 100%;
   }
 }

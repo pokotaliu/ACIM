@@ -56,9 +56,14 @@ export function DropZone({ selectedBlock, onDrop, onClear }) {
       {selectedBlock ? (
         <div className="mt-drop-zone-filled">
           <div className="mt-selected-block">
-            <p className="mt-selected-block-en">{selectedBlock.text_en}</p>
-            {selectedBlock.text_zh && (
-              <p className="mt-selected-block-zh">{selectedBlock.text_zh}</p>
+            {/* Support both old (text_en/text_zh) and new (en/zh) field names */}
+            <p className="mt-selected-block-en">
+              {selectedBlock.en || selectedBlock.text_en}
+            </p>
+            {(selectedBlock.zh || selectedBlock.text_zh) && (
+              <p className="mt-selected-block-zh">
+                {selectedBlock.zh || selectedBlock.text_zh}
+              </p>
             )}
           </div>
           <button

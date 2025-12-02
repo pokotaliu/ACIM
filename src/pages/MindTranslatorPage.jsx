@@ -1,8 +1,9 @@
 import { useParams, Link } from 'react-router-dom';
 import { useMindTranslator } from '../hooks/useMindTranslator';
 import {
-  PageHeader,
-  BlocksSection,
+  CoreBlock,
+  FullTextSection,
+  KeyBlocksSection,
   TranslatorHeader,
   DropZone,
   OutputZone,
@@ -14,6 +15,12 @@ import '../styles/mind-translator.css';
  * MindTranslatorPage - Main page component for the Mind Translator feature
  *
  * Route: /mind-translator/:lessonId
+ *
+ * Features:
+ * - Core Block (核心宣告): Main lesson statement, clickable
+ * - Full Text Section (課文原文): Full lesson text with inline highlights
+ * - Key Blocks Section (關鍵區塊): Blocks organized by category
+ * - Translator: Mind switching and output display
  */
 export function MindTranslatorPage() {
   const { lessonId } = useParams();
@@ -25,6 +32,8 @@ export function MindTranslatorPage() {
     selectedBlock,
     isLoading,
     error,
+    allBlocks,
+    isCoreSelected,
     selectBlock,
     selectBlockDirect,
     clearBlock,
@@ -79,6 +88,9 @@ export function MindTranslatorPage() {
   const translation = getCurrentTranslation();
   const availableMinds = getAvailableMinds();
 
+  // Determine if we have the new format (core, keyBlocks, fullText)
+  const hasNewFormat = lessonData.core && lessonData.keyBlocks;
+
   return (
     <div className="mind-translator-page">
       {/* Back Button */}
@@ -86,21 +98,34 @@ export function MindTranslatorPage() {
         ← 返回課程列表
       </Link>
 
-      {/* Page Header */}
-      <PageHeader
-        lesson={lessonData.lesson}
-        titleEn={lessonData.title_en}
-        titleZh={lessonData.title_zh}
-        keyword={lessonData.keyword}
-        keywordEn={lessonData.keyword_en}
-      />
+      {/* Core Block (核心宣告) - New Format */}
+      {hasNewFormat && (
+        <CoreBlock
+          lesson={lessonData.lesson}
+          core={lessonData.core}
+          isSelected={isCoreSelected}
+          onSelect={selectBlockDirect}
+        />
+      )}
 
-      {/* Blocks Section */}
-      <BlocksSection
-        blocks={lessonData.blocks}
-        selectedBlock={selectedBlock}
-        onSelectBlock={selectBlockDirect}
-      />
+      {/* Full Text Section (課文原文) - New Format */}
+      {hasNewFormat && lessonData.fullText && (
+        <FullTextSection
+          fullText={lessonData.fullText}
+          keyBlocks={lessonData.keyBlocks}
+          selectedBlock={selectedBlock}
+          onSelectBlock={selectBlockDirect}
+        />
+      )}
+
+      {/* Key Blocks Section (關鍵區塊) - New Format */}
+      {hasNewFormat && (
+        <KeyBlocksSection
+          keyBlocks={lessonData.keyBlocks}
+          selectedBlock={selectedBlock}
+          onSelectBlock={selectBlockDirect}
+        />
+      )}
 
       {/* Translator Section */}
       <section className="mt-translator">

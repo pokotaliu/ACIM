@@ -1,7 +1,8 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useMemo } from 'react';
 
 /**
  * Custom hook for Mind Translator state management
+ * Supports the enhanced data structure with core, keyBlocks, and fullText
  *
  * @param {number} lessonNumber - The lesson number to load
  * @returns {object} State and actions for the Mind Translator
@@ -18,6 +19,7 @@ export function useMindTranslator(lessonNumber) {
     async function loadLesson() {
       setIsLoading(true);
       setError(null);
+      setSelectedBlock(null);
 
       try {
         // Format lesson number with leading zeros (e.g., 1 -> 001)
@@ -30,9 +32,17 @@ export function useMindTranslator(lessonNumber) {
 
         const data = await response.json();
 
-        // Validate basic structure
-        if (!data.lesson || !data.blocks || !Array.isArray(data.blocks)) {
+        // Validate basic structure (support both old and new format)
+        if (!data.lesson) {
           throw new Error('Invalid lesson data format');
+        }
+
+        // Check for new format (keyBlocks) or old format (blocks)
+        const hasNewFormat = data.keyBlocks && Array.isArray(data.keyBlocks);
+        const hasOldFormat = data.blocks && Array.isArray(data.blocks);
+
+        if (!hasNewFormat && !hasOldFormat) {
+          throw new Error('Invalid lesson data format: missing blocks');
         }
 
         setLessonData(data);
@@ -54,21 +64,54 @@ export function useMindTranslator(lessonNumber) {
     }
   }, [lessonNumber]);
 
-  // Select a block by ID
+  // Get all blocks (supports both old and new format)
+  const allBlocks = useMemo(() => {
+    if (!lessonData) return [];
+    return lessonData.keyBlocks || lessonData.blocks || [];
+  }, [lessonData]);
+
+  // Select a block by ID (searches keyBlocks)
   const selectBlock = useCallback(
     (blockId) => {
       if (!lessonData) return;
 
-      const block = lessonData.blocks.find((b) => b.id === blockId);
+      // Check if it's the core block
+      if (blockId === 'core' && lessonData.core) {
+        setSelectedBlock({
+          id: 'core',
+          en: lessonData.core.en,
+          zh: lessonData.core.zh,
+          minds: lessonData.core.minds,
+          isCore: true,
+        });
+        return;
+      }
+
+      // Search in keyBlocks or blocks
+      const blocks = lessonData.keyBlocks || lessonData.blocks || [];
+      const block = blocks.find((b) => b.id === blockId);
       setSelectedBlock(block || null);
     },
     [lessonData]
   );
 
-  // Select a block directly
+  // Select a block directly (block object passed in)
   const selectBlockDirect = useCallback((block) => {
     setSelectedBlock(block);
   }, []);
+
+  // Select the core block
+  const selectCore = useCallback(() => {
+    if (!lessonData?.core) return;
+
+    setSelectedBlock({
+      id: 'core',
+      en: lessonData.core.en,
+      zh: lessonData.core.zh,
+      minds: lessonData.core.minds,
+      isCore: true,
+    });
+  }, [lessonData]);
 
   // Clear selected block
   const clearBlock = useCallback(() => {
@@ -84,13 +127,28 @@ export function useMindTranslator(lessonNumber) {
   const getCurrentTranslation = useCallback(() => {
     if (!selectedBlock || !currentMind) return null;
 
-    return selectedBlock.minds?.[currentMind] || null;
+    const translation = selectedBlock.minds?.[currentMind];
+    if (!translation) return null;
+
+    // Normalize field names (support both innerVoice/voice and outputWorld/world)
+    return {
+      filters: translation.filters || [],
+      main: translation.main || '',
+      quote: translation.quote,
+      voice: translation.voice || translation.innerVoice || [],
+      world: translation.world || translation.outputWorld || [],
+    };
   }, [selectedBlock, currentMind]);
 
   // Get available minds for the current lesson
   const getAvailableMinds = useCallback(() => {
     return lessonData?.availableMinds || ['ego', 'spirit'];
   }, [lessonData]);
+
+  // Check if core block is selected
+  const isCoreSelected = useMemo(() => {
+    return selectedBlock?.id === 'core' || selectedBlock?.isCore === true;
+  }, [selectedBlock]);
 
   return {
     // State
@@ -100,13 +158,18 @@ export function useMindTranslator(lessonNumber) {
     isLoading,
     error,
 
+    // Computed data
+    allBlocks,
+    isCoreSelected,
+
     // Actions
     selectBlock,
     selectBlockDirect,
+    selectCore,
     clearBlock,
     switchMind,
 
-    // Computed
+    // Computed functions
     getCurrentTranslation,
     getAvailableMinds,
   };
