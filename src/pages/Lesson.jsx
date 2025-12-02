@@ -40,9 +40,18 @@ export default function Lesson() {
     }
   }, [error, navigate]);
 
+  // Debug: Log activeSceneIndex changes
+  useEffect(() => {
+    console.log('[Lesson] activeSceneIndex:', activeSceneIndex, 'pastScenes:', [...pastScenes]);
+  }, [activeSceneIndex, pastScenes]);
+
   // Setup intersection observer for scenes
   useEffect(() => {
-    if (!lesson?.scenes) return;
+    if (!lesson?.scenes) {
+      console.log('[Lesson] No scenes to observe');
+      return;
+    }
+    console.log('[Lesson] Setting up observer for', lesson.scenes.length, 'scenes');
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -92,13 +101,29 @@ export default function Lesson() {
     navigate(`/lesson/${lessonId + 1}`);
   }, [navigate, lessonId]);
 
+  // Debug: Log lesson state
+  useEffect(() => {
+    console.log('[Lesson] State:', { loading, error: error?.message, hasLesson: !!lesson, lessonId });
+    if (lesson) {
+      console.log('[Lesson] Lesson data:', {
+        scenesCount: lesson.scenes?.length,
+        metadata: lesson.metadata,
+        firstSceneElements: lesson.scenes?.[0]?.elements?.length
+      });
+    }
+  }, [loading, error, lesson, lessonId]);
+
   // Show loading state
   if (loading) {
+    console.log('[Lesson] Showing loading state');
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-pulse text-2xl font-serif text-[var(--color-text-muted)]">
             Loading...
+          </div>
+          <div className="mt-4 text-sm text-[var(--color-text-muted)]">
+            Loading lesson {lessonId}...
           </div>
         </div>
       </div>
@@ -107,7 +132,20 @@ export default function Lesson() {
 
   // Show error or redirect
   if (error || !lesson) {
-    return null;
+    console.log('[Lesson] Error or no lesson:', { error: error?.message, lesson });
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center text-red-600">
+          <p>Error loading lesson: {error?.message || 'Unknown error'}</p>
+          <button
+            onClick={() => navigate('/')}
+            className="mt-4 px-4 py-2 bg-gray-200 rounded"
+          >
+            Back to Home
+          </button>
+        </div>
+      </div>
+    );
   }
 
   const isCompleted = isLessonCompleted(lessonId);
