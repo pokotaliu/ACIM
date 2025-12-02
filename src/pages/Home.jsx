@@ -51,7 +51,7 @@ export default function Home() {
             Lesson 1: Nothing I see means anything.
           </p>
 
-          <div className="grid md:grid-cols-2 gap-4">
+          <div className="grid md:grid-cols-3 gap-4">
             {/* Immersive Mode */}
             <Link
               to="/lesson/1"
@@ -66,6 +66,26 @@ export default function Home() {
               </p>
               <span className="text-sm text-[var(--color-accent)] group-hover:underline inline-flex items-center gap-1">
                 進入閱讀
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </span>
+            </Link>
+
+            {/* Lesson Blocks Mode - New */}
+            <Link
+              to="/lesson-blocks/1"
+              className="group p-6 border border-[var(--color-border)] rounded-xl hover:border-[var(--color-accent)] transition-all hover:shadow-lg"
+            >
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">🧩</span>
+                <h3 className="font-serif text-lg font-medium">區塊探索</h3>
+              </div>
+              <p className="text-sm text-[var(--color-text-muted)] leading-relaxed mb-4">
+                滑動探索四個核心區塊，即時切換三種心智的解讀。手機優先設計。
+              </p>
+              <span className="text-sm text-[var(--color-accent)] group-hover:underline inline-flex items-center gap-1">
+                滑動探索
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                 </svg>
@@ -157,12 +177,18 @@ export default function Home() {
                       {section.description.substring(0, 80)}...
                     </p>
                     {section.start === 1 && (
-                      <div className="flex gap-4 text-sm">
+                      <div className="flex gap-4 text-sm flex-wrap">
                         <Link
                           to="/lesson/1"
                           className="text-[var(--color-accent)] hover:underline"
                         >
                           沉浸式閱讀 →
+                        </Link>
+                        <Link
+                          to="/lesson-blocks/1"
+                          className="text-[var(--color-accent)] hover:underline"
+                        >
+                          區塊探索 →
                         </Link>
                         <Link
                           to="/mind-translator/1"

@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import Lesson from './pages/Lesson';
 import StudyPage from './pages/StudyPage';
 import MindTranslatorPage from './pages/MindTranslatorPage';
+import LessonBlocksPage from './pages/LessonBlocksPage';
 
 function App() {
   // Signal that React app is ready
@@ -20,6 +21,7 @@ function App() {
           <Route path="/lesson/:id" element={<Lesson />} />
           <Route path="/study/:lessonId" element={<StudyPage />} />
           <Route path="/mind-translator/:lessonId" element={<MindTranslatorPage />} />
+          <Route path="/lesson-blocks/:id" element={<LessonBlocksPage />} />
         </Routes>
       </Layout>
     </HashRouter>
