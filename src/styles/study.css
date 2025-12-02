@@ -270,19 +270,19 @@
 
 /* Subtle animation effects */
 .section-content blockquote {
-  animation: fadeInUp 0.6s ease-out;
+  animation: studyFadeInUp 0.6s ease-out;
 }
 
 .section-header {
-  animation: fadeIn 0.8s ease-out;
+  animation: studyFadeIn 0.8s ease-out;
 }
 
-@keyframes fadeIn {
+@keyframes studyFadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
-@keyframes fadeInUp {
+@keyframes studyFadeInUp {
   from {
     opacity: 0;
     transform: translateY(10px);
