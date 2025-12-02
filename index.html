@@ -82,18 +82,32 @@
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-      // Hide loader once app is ready
-      window.addEventListener('load', function() {
-        setTimeout(function() {
-          var loader = document.getElementById('initial-loader');
-          if (loader) {
-            loader.classList.add('fade-out');
-            setTimeout(function() {
-              loader.remove();
-            }, 500);
-          }
-        }, 100);
+      // Hide loader only when React app is ready
+      function hideLoader() {
+        var loader = document.getElementById('initial-loader');
+        if (loader) {
+          loader.classList.add('fade-out');
+          setTimeout(function() {
+            loader.remove();
+          }, 500);
+        }
+      }
+
+      // Listen for React ready signal
+      window.addEventListener('react-ready', function() {
+        // Small delay to ensure initial render is complete
+        setTimeout(hideLoader, 100);
       });
+
+      // Fallback: hide loader after 5 seconds if React doesn't signal
+      // This prevents infinite loading if something goes wrong
+      setTimeout(function() {
+        var loader = document.getElementById('initial-loader');
+        if (loader) {
+          console.warn('React did not signal ready within 5s, hiding loader anyway');
+          hideLoader();
+        }
+      }, 5000);
     </script>
   </body>
 </html>
